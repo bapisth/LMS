@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-catalog="laundry" match-name="address"/>
+  <table-filter match-catalog="laundry" match-name="backofficeuser"/>
+  <table-filter match-catalog="laundry" match-name="booking"/>
+  <table-filter match-catalog="laundry" match-name="customer"/>
+  <table-filter match-catalog="laundry" match-name="paymentdetail"/>
+  <table-filter match-catalog="laundry" match-name="servicegroup"/>
+  <table-filter match-catalog="laundry" match-name="services"/>
+  <table-filter match-catalog="laundry" match-name="signup"/>
+</hibernate-reverse-engineering>

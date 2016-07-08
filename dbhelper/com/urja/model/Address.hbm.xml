@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Address" table="address" catalog="laundry" optimistic-lock="version">
+        <id name="addressid" type="java.lang.Integer">
+            <column name="addressid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="customer" class="com.urja.model.Customer" fetch="select">
+            <column name="customerid" />
+        </many-to-one>
+        <property name="address1" type="string">
+            <column name="address1" length="30" />
+        </property>
+        <property name="address2" type="string">
+            <column name="address2" length="30" />
+        </property>
+        <property name="landmark" type="string">
+            <column name="landmark" length="30" />
+        </property>
+        <property name="postalcode" type="string">
+            <column name="postalcode" length="10" />
+        </property>
+        <property name="district" type="string">
+            <column name="district" length="30" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="30" />
+        </property>
+        <property name="country" type="string">
+            <column name="country" length="30" />
+        </property>
+        <property name="stampdate" type="date">
+            <column name="stampdate" length="10" />
+        </property>
+        <property name="stampuser" type="string">
+            <column name="stampuser" length="30" />
+        </property>
+    </class>
+</hibernate-mapping>

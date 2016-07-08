@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Paymentdetail" table="paymentdetail" catalog="laundry" optimistic-lock="version">
+        <composite-id name="id" class="com.urja.model.PaymentdetailId">
+            <key-property name="orderid" type="int">
+                <column name="orderid" />
+            </key-property>
+            <key-property name="billedamount" type="int">
+                <column name="billedamount" />
+            </key-property>
+            <key-property name="paidamount" type="int">
+                <column name="paidamount" />
+            </key-property>
+            <key-property name="paymenttype" type="string">
+                <column name="paymenttype" length="20" />
+            </key-property>
+            <key-property name="paidinfullflag" type="boolean">
+                <column name="paidinfullflag" />
+            </key-property>
+            <key-property name="stampdate" type="date">
+                <column name="stampdate" length="10" />
+            </key-property>
+            <key-property name="stampuser" type="string">
+                <column name="stampuser" length="30" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

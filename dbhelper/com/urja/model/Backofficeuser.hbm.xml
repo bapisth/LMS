@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Backofficeuser" table="backofficeuser" catalog="laundry" optimistic-lock="version">
+        <composite-id name="id" class="com.urja.model.BackofficeuserId">
+            <key-property name="userid" type="java.lang.Integer">
+                <column name="userid" />
+            </key-property>
+            <key-property name="firstname" type="string">
+                <column name="firstname" length="30" />
+            </key-property>
+            <key-property name="middlename" type="string">
+                <column name="middlename" length="30" />
+            </key-property>
+            <key-property name="lastname" type="string">
+                <column name="lastname" length="30" />
+            </key-property>
+            <key-property name="email" type="string">
+                <column name="email" length="30" />
+            </key-property>
+            <key-property name="phone1" type="string">
+                <column name="phone1" length="20" />
+            </key-property>
+            <key-property name="phone2" type="string">
+                <column name="phone2" length="20" />
+            </key-property>
+            <key-property name="passowrd" type="string">
+                <column name="passowrd" length="20" />
+            </key-property>
+            <key-property name="usertype" type="string">
+                <column name="usertype" length="10" />
+            </key-property>
+            <key-property name="stampdate" type="date">
+                <column name="stampdate" length="10" />
+            </key-property>
+            <key-property name="stampuser" type="string">
+                <column name="stampuser" length="30" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

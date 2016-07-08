@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Booking" table="booking" catalog="laundry" optimistic-lock="version">
+        <id name="bookingid" type="java.lang.Integer">
+            <column name="bookingid" />
+            <generator class="identity" />
+        </id>
+        <property name="orderid" type="java.lang.Integer">
+            <column name="orderid" />
+        </property>
+        <property name="customerid" type="java.lang.Integer">
+            <column name="customerid" />
+        </property>
+        <property name="serviceid" type="java.lang.Integer">
+            <column name="serviceid" />
+        </property>
+        <property name="quantity" type="int">
+            <column name="quantity" not-null="true" />
+        </property>
+        <property name="quantityinkg" type="int">
+            <column name="quantityinkg" not-null="true" />
+        </property>
+        <property name="charges" type="int">
+            <column name="charges" not-null="true" />
+        </property>
+        <property name="bookingdatetime" type="timestamp">
+            <column name="bookingdatetime" length="19" not-null="true" />
+        </property>
+        <property name="pickuptime1" type="time">
+            <column name="pickuptime1" length="8" not-null="true" />
+        </property>
+        <property name="pickuptime2" type="time">
+            <column name="pickuptime2" length="8" not-null="true" />
+        </property>
+        <property name="delivertime1" type="time">
+            <column name="delivertime1" length="8" not-null="true" />
+        </property>
+        <property name="delivertime2" type="time">
+            <column name="delivertime2" length="8" not-null="true" />
+        </property>
+        <property name="addressid" type="java.lang.Integer">
+            <column name="addressid" />
+        </property>
+        <property name="status" type="string">
+            <column name="status" length="10" not-null="true" />
+        </property>
+        <property name="stampdate" type="date">
+            <column name="stampdate" length="10" not-null="true" />
+        </property>
+        <property name="stampuser" type="string">
+            <column name="stampuser" length="30" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

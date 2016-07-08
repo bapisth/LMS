@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Servicegroup" table="servicegroup" catalog="laundry" optimistic-lock="version">
+        <composite-id name="id" class="com.urja.model.ServicegroupId">
+            <key-property name="servicegroupcode" type="int">
+                <column name="servicegroupcode" />
+            </key-property>
+            <key-property name="servicegrouptype" type="string">
+                <column name="servicegrouptype" length="20" />
+            </key-property>
+            <key-property name="servicegroupdesc" type="string">
+                <column name="servicegroupdesc" length="40" />
+            </key-property>
+            <key-property name="stampdate" type="date">
+                <column name="stampdate" length="10" />
+            </key-property>
+            <key-property name="stampuser" type="string">
+                <column name="stampuser" length="30" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>
