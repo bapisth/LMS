@@ -3,11 +3,26 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory name="LaundrySessionFactory">
+    <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/laundry</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping file="dbhelper/com/urja/model//Address.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Backofficeuser.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Booking.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Customer.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Paymentdetail.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Servicegroup.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Services.hbm.xml"/>
+        <mapping file="dbhelper/com/urja/model//Signup.hbm.xml"/>
+        <!-- <mapping class="com.urja.model.Backofficeuser"/>
+        <mapping class="com.urja.model.Booking"/>
+        <mapping class="com.urja.model.Customer"/>
+        <mapping class="com.urja.model.Paymentdetail"/>
+        <mapping class="com.urja.model.Servicegroup"/>
+        <mapping class="com.urja.model.Services"/>
+        <mapping class="com.urja.model.Signup"/> -->
     </session-factory>
 </hibernate-configuration>
