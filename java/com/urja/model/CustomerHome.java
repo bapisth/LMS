@@ -1,13 +1,18 @@
 package com.urja.model;
 // Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+
+import com.urja.model.util.HibernateUtil;
 
 /**
  * Home object for domain model class Customer.
@@ -18,16 +23,9 @@ public class CustomerHome {
 
 	private static final Log log = LogFactory.getLog(CustomerHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
+
 
 	public void persist(Customer transientInstance) {
 		log.debug("persisting Customer instance");
@@ -87,8 +85,9 @@ public class CustomerHome {
 
 	public Customer findById(java.lang.Integer id) {
 		log.debug("getting Customer instance with id: " + id);
+		Session session = sessionFactory.openSession();
 		try {
-			Customer instance = (Customer) sessionFactory.getCurrentSession().get("com.urja.model.Customer", id);
+			Customer instance = (Customer) session.get("com.urja.model.Customer", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -98,19 +97,44 @@ public class CustomerHome {
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
+		}finally {
+			session.close();
 		}
 	}
 
 	public List findByExample(Customer instance) {
-		log.debug("finding Customer instance by example");
+		//log.debug("finding Customer instance by example");
+		Session session = sessionFactory.openSession();
+		List results = new ArrayList();
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Customer")
+			results = session.createCriteria("com.urja.model.Customer")
 					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: " + results.size());
-			return results;
+			//log.debug("find by example successful, result size: " + results.size());
 		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
+			//log.error("find by example failed", re);
+		}finally {
+			session.close();
 		}
+		return results;
+	}
+
+	public Customer findByPhone1(long phone1) {
+		//log.debug("finding Customer instance by example");
+		Session session = sessionFactory.openSession();
+		Customer customer = new Customer();
+		try {
+			String sql = "select c from com.urja.model.Customer c where c.phone1 = "+phone1;
+			Query query = session.createQuery(sql);
+			List results = query.list();
+			if(results != null && results.size()>0)
+				customer = (Customer)results.get(0);
+			//log.debug("find by example successful, result size: " + results.size());
+		} catch (RuntimeException re) {
+			re.printStackTrace();
+			//log.error("find by example failed", re);
+		}finally {
+			session.close();
+		}
+		return customer;
 	}
 }

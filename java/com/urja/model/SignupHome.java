@@ -1,13 +1,19 @@
 package com.urja.model;
 // Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+
+import com.urja.model.util.HibernateUtil;
+import com.urja.util.PortalService;
 
 /**
  * Home object for domain model class Signup.
@@ -18,16 +24,8 @@ public class SignupHome {
 
 	private static final Log log = LogFactory.getLog(SignupHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
 
 	public void persist(Signup transientInstance) {
 		log.debug("persisting Signup instance");
@@ -87,30 +85,60 @@ public class SignupHome {
 
 	public Signup findById(com.urja.model.SignupId id) {
 		log.debug("getting Signup instance with id: " + id);
+		Session session = sessionFactory.openSession();
+		Signup instance = null;
 		try {
-			Signup instance = (Signup) sessionFactory.getCurrentSession().get("com.urja.model.Signup", id);
+			instance = (Signup) session.get("com.urja.model.Signup", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
 				log.debug("get successful, instance found");
-			}
-			return instance;
+			} 
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
+		}finally {
+			session.close();
 		}
+		return instance;
 	}
 
 	public List findByExample(Signup instance) {
-		log.debug("finding Signup instance by example");
+		//log.debug("finding Signup instance by example");
+		Session session = sessionFactory.openSession();
+		List results = new ArrayList();
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Signup")
+			results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Signup")
 					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: " + results.size());
-			return results;
+			//log.debug("find by example successful, result size: " + results.size());
 		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
+			//log.error("find by example failed", re);
+		}finally {
+			session.close();
 		}
+		return results;
+	}
+
+	public boolean checkValidLogin(Long phone1, String password) {
+		//log.debug("finding Customer instance by example");
+		Session session = sessionFactory.openSession();
+		boolean flag = false; 
+		try {
+			String sql = "select count(*) from Signup s where s.id.password = '"+password+"' and s.customer.phone1 = "+phone1;
+			Query query = session.createQuery(sql);
+			List results = query.list();
+			if(results!=null && results.size()>0){
+				Object objects = (Object)results.get(0);
+				int count = PortalService.parseInt(objects.toString());
+				flag = count == 1;
+			}
+			//log.debug("find by example successful, result size: " + results.size());
+		} catch (RuntimeException re) {
+			re.printStackTrace();
+			//log.error("find by example failed", re);
+		}finally {
+			session.close();
+		}
+		return flag;
 	}
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	<tiles-definitions>
+		<definition name="commonTemplate" template="/template.jsp">
+			<put-attribute name="title" value="Laundry Service" />
+			<put-attribute name="header" value="/includes/includeMenu.jsp" />
+			<put-attribute name="footer" value="/includes/includeFooter.jsp" />
+		</definition>
+		<definition name="laundry.testSteps" extends="commonTemplate">
+			<put-attribute name="body" value="/testSteps.jsp" />
+		</definition>
+		<definition name="laundry.myProfile" extends="commonTemplate">
+			<put-attribute name="body" value="/myProfile.jsp" />
+		</definition>	
+		
+	</tiles-definitions>

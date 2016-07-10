@@ -15,8 +15,8 @@ public class Customer implements java.io.Serializable {
 	private String middlename;
 	private String lastname;
 	private String email;
-	private int phone1;
-	private int phone2;
+	private Long phone1;
+	private Long phone2;
 	private Date stampdate;
 	private String stampuser;
 	private Set addresses = new HashSet(0);
@@ -25,7 +25,7 @@ public class Customer implements java.io.Serializable {
 	public Customer() {
 	}
 
-	public Customer(String firstname, String middlename, String lastname, String email, int phone1, int phone2,
+	public Customer(String firstname, String middlename, String lastname, String email, Long phone1, Long phone2,
 			Date stampdate, String stampuser) {
 		this.firstname = firstname;
 		this.middlename = middlename;
@@ -37,7 +37,7 @@ public class Customer implements java.io.Serializable {
 		this.stampuser = stampuser;
 	}
 
-	public Customer(String firstname, String middlename, String lastname, String email, int phone1, int phone2,
+	public Customer(String firstname, String middlename, String lastname, String email, Long phone1, Long phone2,
 			Date stampdate, String stampuser, Set addresses, Set signups) {
 		this.firstname = firstname;
 		this.middlename = middlename;
@@ -91,19 +91,19 @@ public class Customer implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public int getPhone1() {
+	public Long getPhone1() {
 		return this.phone1;
 	}
 
-	public void setPhone1(int phone1) {
+	public void setPhone1(Long phone1) {
 		this.phone1 = phone1;
 	}
 
-	public int getPhone2() {
+	public Long getPhone2() {
 		return this.phone2;
 	}
 
-	public void setPhone2(int phone2) {
+	public void setPhone2(Long phone2) {
 		this.phone2 = phone2;
 	}
 

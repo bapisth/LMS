@@ -20,10 +20,10 @@
         <property name="email" type="string">
             <column name="email" length="20" not-null="true" />
         </property>
-        <property name="phone1" type="int">
+        <property name="phone1" type="java.lang.Long">
             <column name="phone1" not-null="true" />
         </property>
-        <property name="phone2" type="int">
+        <property name="phone2" type="java.lang.Long">
             <column name="phone2" not-null="true" />
         </property>
         <property name="stampdate" type="date">

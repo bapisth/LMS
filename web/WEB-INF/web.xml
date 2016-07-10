@@ -9,4 +9,15 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  	<context-param>
+		<param-name>
+            org.apache.tiles.definition.DefinitionsFactory.DEFINITIONS_CONFIG
+        </param-name>
+		<param-value>
+            /WEB-INF/tiles-defs.xml
+        </param-value>
+    </context-param>
+    <listener>
+    	<listener-class>org.apache.tiles.web.startup.TilesListener</listener-class>
+    </listener>
 </web-app>

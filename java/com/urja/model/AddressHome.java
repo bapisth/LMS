@@ -6,7 +6,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
 import com.urja.model.util.HibernateUtil;
@@ -104,10 +106,15 @@ public class AddressHome {
 	}
 	
 	public void save(Address address) {
+		Session session = sessionFactory.openSession();
 		try{
-			sessionFactory.openSession().save(Address.class.getName(),address);
+			Transaction transaction = session.beginTransaction();
+			session.save(Address.class.getName(),address);
+			transaction.commit();
 		}catch(Exception exception){
 			exception.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 	}
