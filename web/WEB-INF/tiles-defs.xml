@@ -11,8 +11,14 @@
 		<definition name="laundry.testSteps" extends="commonTemplate">
 			<put-attribute name="body" value="/testSteps.jsp" />
 		</definition>
+		<definition name="laundry.home" extends="commonTemplate">
+			<put-attribute name="body" value="/home.jsp" />
+		</definition>
 		<definition name="laundry.myProfile" extends="commonTemplate">
 			<put-attribute name="body" value="/myProfile.jsp" />
-		</definition>	
+		</definition>
+		<definition name="laundry.continueSignUp" extends="commonTemplate">
+			<put-attribute name="body" value="/continueSignUp.jsp" />
+		</definition>
 		
 	</tiles-definitions>

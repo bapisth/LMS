@@ -10,6 +10,7 @@ import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
 import com.urja.model.util.HibernateUtil;
@@ -25,6 +26,25 @@ public class CustomerHome {
 
 	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
+
+
+	public Integer Save(Customer transientInstance) {
+		log.debug("persisting Customer instance");
+		Session session = sessionFactory.openSession();
+		Integer customerId = new Integer(0);
+		try {
+			Transaction transaction = session.beginTransaction();
+			customerId = (Integer)session.save(transientInstance);
+			transaction.commit();
+			log.debug("persist successful");
+		} catch (RuntimeException re) {
+			log.error("persist failed", re);
+			throw re;
+		}finally {
+			session.close();
+		}
+		return customerId;
+	}
 
 
 	public void persist(Customer transientInstance) {

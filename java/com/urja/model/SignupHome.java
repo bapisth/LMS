@@ -10,6 +10,7 @@ import org.hibernate.LockMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
 import com.urja.model.util.HibernateUtil;
@@ -28,13 +29,18 @@ public class SignupHome {
 
 
 	public void persist(Signup transientInstance) {
+		Session session = sessionFactory.openSession();
 		log.debug("persisting Signup instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			Transaction transaction = session.beginTransaction();
+			session.persist(transientInstance);
+			transaction.commit();
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
 			throw re;
+		}finally {
+			session.close();
 		}
 	}
 

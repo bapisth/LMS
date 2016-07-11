@@ -38,7 +38,7 @@ public class IndexCtrl extends HttpServlet {
 
 		Integer customerid = (Integer)session.getAttribute("customerid");
 		String customerName = (String)session.getAttribute("customerName");
-		String redirectPath = "laundry.testSteps";
+		String redirectPath = "laundry.home";
 		
 		log.info("portal page");
 		
@@ -49,6 +49,11 @@ public class IndexCtrl extends HttpServlet {
 					Customer customer = new CustomerHome().findById(customerid);
 					request.setAttribute("customer", customer);
 					redirectPath = "laundry.myProfile";
+					break;
+					
+				case "continueSignUp":
+					request.setAttribute("customer", new CustomerHome().findById(customerid));
+					redirectPath = "laundry.continueSignUp";
 					break;
 		
 				default:

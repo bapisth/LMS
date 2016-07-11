@@ -1,6 +1,7 @@
 package com.urja.ctrl;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,10 +34,11 @@ public class SignupCtrl extends HttpServlet {
 		HttpSession session = request.getSession();
 		PortalService.setRequest(request, session);
 		String cmd = PortalService.getString("cmd");
+		String redirectPath = PortalService.getContextPath();
 		//log.info("cmd : "+cmd);
 		 
 		switch (cmd) {
-			case "login":
+			case "login":{
 				long mobile = PortalService.getLong("mobile");
 				String password = PortalService.getString("password");
 				if(new SignupHome().checkValidLogin(mobile, password)){
@@ -44,16 +46,36 @@ public class SignupCtrl extends HttpServlet {
 					Customer customer = new CustomerHome().findByPhone1(mobile);
 					session.setAttribute("customerid", customer.getCustomerid());
 					session.setAttribute("customerName", PortalService.getCustomerName(customer));
-					response.sendRedirect(PortalService.getContextPath()+"/portal?cmd=myProfile");
+					redirectPath += "/portal?cmd=myProfile";
 				}else
 					log.info("successfully not login");
 				break;
-	
+			}
+				
+
+			case "signUp":{
+				long phone1 = PortalService.getLong("mobile");
+				String email = PortalService.getString("email");
+				String password = PortalService.getString("password");
+				
+				Customer customer = new Customer("", "", "", email, phone1, new Long(0), new Date(), "");
+				customer.setCustomerid(new CustomerHome().Save(customer));
+				SignupId signupId = new SignupId(customer.getCustomerid(), password, "", "", new Date(), "");
+				Signup signup = new Signup(signupId, customer); 
+				new SignupHome().persist(signup);
+				session.setAttribute("customerid", customer.getCustomerid());
+				session.setAttribute("customerName", "");
+				redirectPath += "/portal?cmd=continueSignUp";
+				break;
+			}
+				
 			default:
 				break;
 		}
 		
-		
+
+		response.sendRedirect(redirectPath);
+		return;
 	}
 
 }
