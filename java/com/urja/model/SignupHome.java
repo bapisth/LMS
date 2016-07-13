@@ -13,6 +13,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
 
+import com.urja.auth.LoginAuthentication;
 import com.urja.model.util.HibernateUtil;
 import com.urja.util.PortalService;
 
@@ -130,7 +131,8 @@ public class SignupHome {
 		Session session = sessionFactory.openSession();
 		boolean flag = false; 
 		try {
-			String sql = "select count(*) from Signup s where s.id.password = '"+password+"' and s.customer.phone1 = "+phone1;
+			String decryptedPassword = new LoginAuthentication().encrypt(password);
+			String sql = "select count(*) from Signup s where s.id.password = '"+decryptedPassword+"' and s.customer.phone1 = "+phone1;
 			Query query = session.createQuery(sql);
 			List results = query.list();
 			if(results!=null && results.size()>0){
@@ -141,8 +143,10 @@ public class SignupHome {
 			//log.debug("find by example successful, result size: " + results.size());
 		} catch (RuntimeException re) {
 			re.printStackTrace();
-			//log.error("find by example failed", re);
-		}finally {
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally {
 			session.close();
 		}
 		return flag;

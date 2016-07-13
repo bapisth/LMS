@@ -1,198 +1,109 @@
--- phpMyAdmin SQL Dump
--- version 4.1.14
--- http://www.phpmyadmin.net
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 08, 2016 at 10:26 PM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: laundry
+-- ------------------------------------------------------
+-- Server version	5.6.17
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `laundry`
+-- Dumping data for table `address`
 --
 
--- --------------------------------------------------------
+LOCK TABLES `address` WRITE;
+/*!40000 ALTER TABLE `address` DISABLE KEYS */;
+/*!40000 ALTER TABLE `address` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `address`
+-- Dumping data for table `backofficeuser`
 --
 
-CREATE TABLE IF NOT EXISTS `address` (
-  `addressid` int(10) NOT NULL AUTO_INCREMENT,
-  `customerid` int(10) DEFAULT NULL,
-  `address1` varchar(30) DEFAULT NULL,
-  `address2` varchar(30) DEFAULT NULL,
-  `landmark` varchar(30) DEFAULT NULL,
-  `postalcode` varchar(10) DEFAULT NULL,
-  `district` varchar(30) DEFAULT NULL,
-  `state` varchar(30) DEFAULT NULL,
-  `country` varchar(30) DEFAULT NULL,
-  `stampdate` date DEFAULT NULL,
-  `stampuser` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`addressid`),
-  KEY `customerid` (`customerid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+LOCK TABLES `backofficeuser` WRITE;
+/*!40000 ALTER TABLE `backofficeuser` DISABLE KEYS */;
+/*!40000 ALTER TABLE `backofficeuser` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `backofficeuser`
+-- Dumping data for table `booking`
 --
 
-CREATE TABLE IF NOT EXISTS `backofficeuser` (
-  `userid` int(30) DEFAULT NULL,
-  `firstname` varchar(30) DEFAULT NULL,
-  `middlename` varchar(30) DEFAULT NULL,
-  `lastname` varchar(30) DEFAULT NULL,
-  `email` varchar(30) NOT NULL,
-  `phone1` varchar(20) NOT NULL,
-  `phone2` varchar(20) DEFAULT NULL,
-  `passowrd` varchar(20) DEFAULT NULL,
-  `usertype` varchar(10) DEFAULT NULL,
-  `stampdate` date DEFAULT NULL,
-  `stampuser` varchar(30) DEFAULT NULL,
-  UNIQUE KEY `email` (`email`,`phone1`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+LOCK TABLES `booking` WRITE;
+/*!40000 ALTER TABLE `booking` DISABLE KEYS */;
+/*!40000 ALTER TABLE `booking` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `booking`
+-- Dumping data for table `customer`
 --
 
-CREATE TABLE IF NOT EXISTS `booking` (
-  `bookingid` int(10) NOT NULL AUTO_INCREMENT,
-  `orderid` int(20) DEFAULT NULL,
-  `customerid` int(10) DEFAULT NULL,
-  `serviceid` int(10) DEFAULT NULL,
-  `quantity` int(10) NOT NULL,
-  `quantityinkg` int(10) NOT NULL,
-  `charges` int(10) NOT NULL,
-  `bookingdatetime` datetime NOT NULL,
-  `pickuptime1` time NOT NULL,
-  `pickuptime2` time NOT NULL,
-  `delivertime1` time NOT NULL,
-  `delivertime2` time NOT NULL,
-  `addressid` int(10) DEFAULT NULL,
-  `status` varchar(10) NOT NULL,
-  `stampdate` date NOT NULL,
-  `stampuser` varchar(30) NOT NULL,
-  PRIMARY KEY (`bookingid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (1,'','','','hemendra7011@gmail.com',9438437865,0,'2016-07-13',''),(2,'','','','suman@suman.com',9823530011,0,'2016-07-13',''),(3,'','','','a@a.com',1234567890,0,'2016-07-13',''),(4,'','','','o@o.com',987654321,0,'2016-07-13',''),(5,'','','','suman@suman.com',9776973244,0,'2016-07-13','');
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `customer`
+-- Dumping data for table `paymentdetail`
 --
 
-CREATE TABLE IF NOT EXISTS `customer` (
-  `customerid` int(10) NOT NULL AUTO_INCREMENT,
-  `firstname` varchar(20) NOT NULL,
-  `middlename` varchar(20) NOT NULL,
-  `lastname` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `phone1` int(15) NOT NULL,
-  `phone2` int(15) NOT NULL,
-  `stampdate` date NOT NULL,
-  `stampuser` varchar(30) NOT NULL,
-  PRIMARY KEY (`customerid`),
-  UNIQUE KEY `email` (`email`,`phone1`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+LOCK TABLES `paymentdetail` WRITE;
+/*!40000 ALTER TABLE `paymentdetail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `paymentdetail` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `paymentdetail`
+-- Dumping data for table `servicegroup`
 --
 
-CREATE TABLE IF NOT EXISTS `paymentdetail` (
-  `orderid` int(10) NOT NULL,
-  `billedamount` int(10) NOT NULL,
-  `paidamount` int(10) NOT NULL,
-  `paymenttype` varchar(20) NOT NULL,
-  `paidinfullflag` tinyint(1) NOT NULL,
-  `stampdate` date NOT NULL,
-  `stampuser` varchar(30) NOT NULL,
-  UNIQUE KEY `orderid` (`orderid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+LOCK TABLES `servicegroup` WRITE;
+/*!40000 ALTER TABLE `servicegroup` DISABLE KEYS */;
+/*!40000 ALTER TABLE `servicegroup` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `servicegroup`
+-- Dumping data for table `services`
 --
 
-CREATE TABLE IF NOT EXISTS `servicegroup` (
-  `servicegroupcode` int(10) NOT NULL,
-  `servicegrouptype` varchar(20) NOT NULL,
-  `servicegroupdesc` varchar(40) NOT NULL,
-  `stampdate` date NOT NULL,
-  `stampuser` varchar(30) NOT NULL,
-  UNIQUE KEY `servicegroupcode` (`servicegroupcode`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
+LOCK TABLES `services` WRITE;
+/*!40000 ALTER TABLE `services` DISABLE KEYS */;
+/*!40000 ALTER TABLE `services` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `services`
+-- Dumping data for table `signup`
 --
 
-CREATE TABLE IF NOT EXISTS `services` (
-  `serviceid` int(10) NOT NULL AUTO_INCREMENT,
-  `servicegroupcode` int(10) NOT NULL,
-  `servicename` varchar(40) NOT NULL,
-  `servicecode` int(10) NOT NULL,
-  `servicedesc` varchar(50) NOT NULL,
-  `chargesperkg` int(10) NOT NULL,
-  `discount` int(10) DEFAULT NULL,
-  `stampdate` date NOT NULL,
-  `stampuser` varchar(30) NOT NULL,
-  PRIMARY KEY (`serviceid`),
-  UNIQUE KEY `serviceid` (`serviceid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
+LOCK TABLES `signup` WRITE;
+/*!40000 ALTER TABLE `signup` DISABLE KEYS */;
+INSERT INTO `signup` VALUES (1,'bapi7011','','','2016-07-13',''),(2,'1234','','','2016-07-13',''),(3,'esVEyRwDXp8=','','','2016-07-13',''),(4,'FzQ7sQ43rSE=','','','2016-07-13',''),(5,'IE4yyVRhb8t9UkEH+vhQHg==','','','2016-07-13','');
+/*!40000 ALTER TABLE `signup` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `signup`
---
-
-CREATE TABLE IF NOT EXISTS `signup` (
-  `customerid` int(10) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
-  `status` varchar(20) DEFAULT NULL,
-  `OTP` varchar(10) DEFAULT NULL,
-  `stampdate` date DEFAULT NULL,
-  `stampuser` varchar(30) DEFAULT NULL,
-  UNIQUE KEY `customerid` (`customerid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Constraints for dumped tables
+-- Dumping events for database 'laundry'
 --
 
 --
--- Constraints for table `address`
+-- Dumping routines for database 'laundry'
 --
-ALTER TABLE `address`
-  ADD CONSTRAINT `ADDRESS_CUSTOMER_ADD CONSTRAINT` FOREIGN KEY (`customerid`) REFERENCES `customer` (`customerid`) ON DELETE CASCADE ON UPDATE CASCADE;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Constraints for table `signup`
---
-ALTER TABLE `signup`
-  ADD CONSTRAINT `CUSTOMER_SIGNUP_ADD CONSTRAINT` FOREIGN KEY (`customerid`) REFERENCES `customer` (`customerid`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2016-07-13 11:58:50
