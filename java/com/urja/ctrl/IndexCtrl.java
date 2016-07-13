@@ -20,6 +20,7 @@ import com.urja.util.PortalService;
 
 @WebServlet("/portal")
 public class IndexCtrl extends HttpServlet {
+	private Customer customer;
 	private static final Log log = LogFactory.getLog(IndexCtrl.class);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -49,9 +50,15 @@ public class IndexCtrl extends HttpServlet {
 			switch (cmd) {
 			case "myProfile":
 				System.out.println("cmd : " + cmd);
-				Customer customer = new CustomerHome().findById(customerid);
+				customer = new CustomerHome().findById(customerid);
 				request.setAttribute("customer", customer);
 				redirectPath = "laundry.myProfile";
+				break;
+			case "nextSteps":
+				System.out.println("cmd : " + cmd);
+				customer = new CustomerHome().findById(customerid);
+				request.setAttribute("customer", customer);
+				redirectPath = "laundry.nextSteps";
 				break;
 			case "continueSignUp":
 				request.setAttribute("customer", new CustomerHome().findById(customerid));

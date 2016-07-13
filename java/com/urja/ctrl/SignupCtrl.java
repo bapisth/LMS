@@ -55,7 +55,8 @@ public class SignupCtrl extends HttpServlet {
 					Customer customer = new CustomerHome().findByPhone1(mobile);
 					session.setAttribute("customerid", customer.getCustomerid());
 					session.setAttribute("customerName", PortalService.getCustomerName(customer));
-					redirectPath += "/portal?cmd=myProfile";
+					//redirectPath += "/portal?cmd=myProfile";
+					redirectPath += "/portal?cmd=nextSteps";
 				}else
 					log.info("Having Trouble in Log-in to the Application!!! You may have entered the wrong userid and password.");
 				break;

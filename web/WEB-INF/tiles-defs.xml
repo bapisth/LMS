@@ -20,5 +20,7 @@
 		<definition name="laundry.continueSignUp" extends="commonTemplate">
 			<put-attribute name="body" value="/continueSignUp.jsp" />
 		</definition>
-		
+		<definition name="laundry.nextSteps" extends="commonTemplate">
+			<put-attribute name="body" value="/nextStepService.jsp" />
+		</definition>
 	</tiles-definitions>
