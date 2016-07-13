@@ -37,13 +37,13 @@ public class CustomerCtrl extends HttpServlet {
 		log.info("cmd : "+cmd);
 		 
 
-		switch (cmd) {
+		/*switch (cmd) {
 			case "":
 				break;
 	
 			default:
 				break;
-		}
+		}*/
 		
 	}
 
