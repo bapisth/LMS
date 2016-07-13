@@ -1,5 +1,5 @@
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <!-- Header
         ============================================= -->
         <header id="header" class="transparent-header dark full-header no-sticky">
@@ -367,10 +367,21 @@
                                 </ul>
                             </li>
                             
+                            <c:choose>
+								  <c:when test="${customerid gt 0}">
+								    <li><a href="Logout" data-toggle="modal" data-target=".bs-example-modal-sm"><div>LogOut</div></a></li>
+								  </c:when>
+								  <c:otherwise>
+								    <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm"><div>Log In</div></a></li>
+								  </c:otherwise>
+							</c:choose>
                             
-                             <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm"><div>Log In</div></a>
+                            <%-- <c:if test="${customerid ge 0}">
+ 									<li><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm"><div>Log In</div></a></li>
+							</c:if> --%>
+                             
                                
-                            </li>
+                            
                         </ul>
 
                         <!-- login modal

@@ -25,8 +25,8 @@
                 <div class="container clearfix">
 				<!----process tabs---->
 				  	<div id="processTabs">
-				 
-				  		name : ${customer.firstname}
+				 		session value : ${customerid} 
+				  		name : ${customer.email}
 				  	</div>
 				</div>
 			</div>

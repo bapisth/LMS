@@ -30,7 +30,7 @@ public class IndexCtrl extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
 		PortalService.setRequest(request, session);
 		String cmd = PortalService.getString("cmd");
 		TilesContainer container = TilesAccess.getContainer(session.getServletContext());
@@ -39,10 +39,13 @@ public class IndexCtrl extends HttpServlet {
 		Integer customerid = (Integer) session.getAttribute("customerid");
 		String customerName = (String) session.getAttribute("customerName");
 		String redirectPath = "laundry.home";
+		
+		System.out.println("customer ID======="+customerid);
+		System.out.println("customerName======="+customerName);
 
 		log.info("portal page");
 
-		if (customerid != null) // for signed in uswe
+		if (customerid != null){
 			switch (cmd) {
 			case "myProfile":
 				System.out.println("cmd : " + cmd);
@@ -58,9 +61,7 @@ public class IndexCtrl extends HttpServlet {
 			default:
 				break;
 			}
-		else {
 		}
-
 		container.render(redirectPath, request, response);
 	}
 

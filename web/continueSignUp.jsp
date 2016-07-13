@@ -26,7 +26,7 @@
 				<!----process tabs---->
 				  	<div id="processTabs">
 				 continueSignUp.jsp<br />
-				  		name : ${customer.firstname}
+				  		name : ${customer.email}
 				  	</div>
 				</div>
 			</div>
