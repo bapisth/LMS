@@ -11,6 +11,8 @@ import org.apache.commons.codec.binary.Base64;
  * @author Hemendra
  * Jul 13, 2016
  * 11:51:14 AM
+ * ref: http://stackoverflow.com/questions/10303767/encrypt-and-decrypt-in-java
+ * 
  */
 public class LoginAuthentication {
 
@@ -73,18 +75,4 @@ public class LoginAuthentication {
 		}
 		return decryptedText;
 	}
-
-	/*public static void main(String args[]) throws Exception {
-		LoginAuthentication td = new LoginAuthentication();
-
-		String target = "bapisth";
-		String encrypted = td.encrypt(target);
-		String decrypted = td.decrypt(encrypted);
-
-		System.out.println("String To Encrypt: " + target);
-		System.out.println("Encrypted String:" + encrypted);
-		System.out.println("Decrypted String:" + decrypted);
-
-	}*/
-
 }
