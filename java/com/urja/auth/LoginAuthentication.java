@@ -15,7 +15,6 @@ import org.apache.commons.codec.binary.Base64;
  * 
  */
 public class LoginAuthentication {
-
 	private static final String UNICODE_FORMAT = "UTF8";
 	public static final String DESEDE_ENCRYPTION_SCHEME = "DESede";
 	private KeySpec ks;

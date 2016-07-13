@@ -45,7 +45,6 @@ public class SignupCtrl extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//log.info("cmd : "+cmd);
 		 
 		switch (cmd) {
 			case "login":{
@@ -58,7 +57,7 @@ public class SignupCtrl extends HttpServlet {
 					session.setAttribute("customerName", PortalService.getCustomerName(customer));
 					redirectPath += "/portal?cmd=myProfile";
 				}else
-					log.info("successfully not login");
+					log.info("Having Trouble in Log-in to the Application!!! You may have entered the wrong userid and password.");
 				break;
 			}
 				

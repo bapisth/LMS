@@ -127,7 +127,7 @@ public class SignupHome {
 	}
 
 	public boolean checkValidLogin(Long phone1, String password) {
-		//log.debug("finding Customer instance by example");
+		log.info("-------------------------checkValidLogin()");
 		Session session = sessionFactory.openSession();
 		boolean flag = false; 
 		try {

@@ -21,50 +21,47 @@ import com.urja.util.PortalService;
 @WebServlet("/portal")
 public class IndexCtrl extends HttpServlet {
 	private static final Log log = LogFactory.getLog(IndexCtrl.class);
-	 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		doPost(request, response);
 	}
-	
-	 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		PortalService.setRequest(request, session);
-		String cmd = PortalService.getString("cmd");		
+		String cmd = PortalService.getString("cmd");
 		TilesContainer container = TilesAccess.getContainer(session.getServletContext());
 		request.setAttribute("topStyle", "background-image: url('images/parallax/9.jpg'); padding: 120px 0;");
-		
 
-		Integer customerid = (Integer)session.getAttribute("customerid");
-		String customerName = (String)session.getAttribute("customerName");
+		Integer customerid = (Integer) session.getAttribute("customerid");
+		String customerName = (String) session.getAttribute("customerName");
 		String redirectPath = "laundry.home";
-		
-		log.info("portal page");
-		
-		if(customerid!=null)	//for signed in uswe
-			switch (cmd) {
-				case "myProfile":
-					System.out.println("cmd : "+cmd);
-					Customer customer = new CustomerHome().findById(customerid);
-					request.setAttribute("customer", customer);
-					redirectPath = "laundry.myProfile";
-					break;
-					
-				case "continueSignUp":
-					request.setAttribute("customer", new CustomerHome().findById(customerid));
-					redirectPath = "laundry.continueSignUp";
-					break;
-		
-				default:
-					break;
-			}
-		else{
-			
-		}
-		
 
-		container.render(redirectPath , request, response);
+		log.info("portal page");
+
+		if (customerid != null) // for signed in uswe
+			switch (cmd) {
+			case "myProfile":
+				System.out.println("cmd : " + cmd);
+				Customer customer = new CustomerHome().findById(customerid);
+				request.setAttribute("customer", customer);
+				redirectPath = "laundry.myProfile";
+				break;
+			case "continueSignUp":
+				request.setAttribute("customer", new CustomerHome().findById(customerid));
+				redirectPath = "laundry.continueSignUp";
+				break;
+
+			default:
+				break;
+			}
+		else {
+		}
+
+		container.render(redirectPath, request, response);
 	}
 
 }
