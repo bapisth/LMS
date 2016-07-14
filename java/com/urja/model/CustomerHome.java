@@ -93,13 +93,18 @@ public class CustomerHome {
 
 	public Customer merge(Customer detachedInstance) {
 		log.debug("merging Customer instance");
+		Session session = sessionFactory.openSession();
 		try {
-			Customer result = (Customer) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Transaction transaction = session.beginTransaction();
+			Customer result = (Customer) session.merge(detachedInstance);
 			log.debug("merge successful");
+			transaction.commit();
 			return result;
 		} catch (RuntimeException re) {
 			log.error("merge failed", re);
 			throw re;
+		}finally {
+			session.close();
 		}
 	}
 

@@ -35,12 +35,17 @@ public class AddressHome {
 
 	public void persist(Address transientInstance) {
 		log.debug("persisting Address instance");
+		Session session = sessionFactory.openSession();
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			Transaction transaction = session.beginTransaction();
+			session.persist(transientInstance);
+			transaction.commit();
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
 			throw re;
+		}finally {
+			session.close();
 		}
 	}
 

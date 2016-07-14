@@ -430,19 +430,26 @@
 	                                           <form id="login-form" name="login-form" class="nobottommargin" action="signup" method="post">
 													<input type="hidden" name="cmd" value="login"/>
 	                                   
-	
+
 				                                    <div class="col_full">
 				                                        <label for="login-form-username">Username:</label>
-				                                        <input type="text" id="login-form-username" name="mobile" value="" class="form-control not-dark" placeholder="Enter Your Mobile Number." autocomplete="off" />
+														<div class="input-group">
+  															<span class="input-group-addon"><i class="icon-phone"></i></span>
+  															<input type="text" value="+91" style="width: 17%; border-right-width: 0px;" class="form-control not-dark" disabled="disabled">
+					                                        <input type="text" id="login-form-username" name="mobile" value="" class="form-control not-dark" placeholder="Enter Your Mobile Number." autocomplete="off" style="width: 83%; border-left-width: 0px;" required="required" maxlength="10" />
+				                                    	</div>
 				                                    </div>
 				
 				                                    <div class="col_full">
 				                                        <label for="login-form-password">Password:</label>
-				                                        <input type="password" id="login-form-password" name="password" value="" class="form-control not-dark" placeholder="Enter Your Password." />
+														<div class="input-group">
+															<span class="input-group-addon"><i class="icon-key"></i></span>
+					                                        <input type="password" id="login-form-password" name="password" value="" class="form-control not-dark" placeholder="Enter Your Password." required="required" />
+					                                    </div>
 				                                    </div>
 				
 				                                    <div class="col_full nobottommargin">
-				                                        <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login"onclick="this.form.submit();">Login</button>
+				                                        <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login">Login</button>
 				                                        <a href="#" class="fright">Forgot Password?</a>
 				                                    </div>
 				                                </form>
@@ -463,21 +470,31 @@
 	
 				                                    <div class="col_full">
 				                                        <label for="login-form-username">Username:</label>
-				                                        <input type="text" id="signup-form-username" name="mobile" value="" class="form-control not-dark" placeholder="Enter Your Mobile Number."  autocomplete="off"/>
+														<div class="input-group">
+  															<span class="input-group-addon"><i class="icon-phone"></i></span>
+  															<input type="text" value="+91" style="width: 17%; border-right-width: 0px;" class="form-control not-dark" disabled="disabled">
+					                                        <input type="text" id="signup-form-username" name="mobile" value="" class="form-control not-dark" placeholder="Enter Your Mobile Number." autocomplete="off" style="width: 83%; border-left-width: 0px;"  required="required" maxlength="10"/>
+				                                    	</div>
 				                                    </div>
 				
 				                                    <div class="col_full">
 				                                        <label for="login-form-password">Email ID (Optional):</label>
-				                                        <input type="text" id="signup-form-email" name="email" value="" class="form-control not-dark" placeholder="Enter Your Email ID."  autocomplete="off"/>
+														<div class="input-group">
+															<span class="input-group-addon"><i class="icon-email3"></i></span>
+					                                        <input type="email" id="signup-form-email" name="email" value="" class="form-control not-dark" placeholder="Enter Your Email ID."  autocomplete="off"/>
+				                                    	</div>
 				                                    </div>
 				
 				                                    <div class="col_full">
 				                                        <label for="login-form-password">Password:</label>
-				                                        <input type="password" id="signup-form-password" name="password" value="" class="form-control not-dark" placeholder="Enter Your Password." />
+														<div class="input-group">
+															<span class="input-group-addon"><i class="icon-key"></i></span>
+					                                        <input type="password" id="signup-form-password" name="password" value="" class="form-control not-dark" placeholder="Enter Your Password."  required="required"/>
+				                                    	</div>
 				                                    </div>
 				
 				                                    <div class="col_full nobottommargin">
-				                                        <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login"onclick="this.form.submit();">Sign Up</button>
+				                                        <button class="button button-3d button-black nomargin" id="login-form-submit" name="login-form-submit" value="login" >Sign Up</button>
 				                                        
 				                                    </div>
 				                                 <div class="line line-sm"></div>
@@ -506,4 +523,6 @@
             </div>
 
         </header><!-- #header end -->
+        
+
         

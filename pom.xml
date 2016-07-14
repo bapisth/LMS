@@ -11,9 +11,6 @@
 			<resource>
 				<directory>resources</directory>
 			</resource>
-			<resource>
-				<directory>dbhelper</directory>
-			</resource>
 		</resources>
 		<plugins>
 			<plugin>
