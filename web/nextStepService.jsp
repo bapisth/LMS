@@ -1,4 +1,5 @@
 <%@page import="com.urja.model.Customer"%>
+<%@page import="com.urja.model.Address" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Page Title
         ============================================= -->
@@ -152,7 +153,7 @@
 
 									</div>
 									<div class="col-md-6">
-										<input type="text" class="form-control" value=" xxx062365" />
+										<input type="text" class="form-control" value=" ${customerid}" disabled="disabled" />
 									</div>
 								</div>
 
@@ -162,7 +163,7 @@
 
 									</div>
 									<div class="col-md-6">
-										<input type="text" class="form-control" value="" />
+										<input type="text" class="form-control" value="${customer.firstname}" />
 									</div>
 								</div>
 
@@ -172,7 +173,7 @@
 
 									</div>
 									<div class="col-md-6">
-										<input type="text" class="form-control" value="" />
+										<input type="text" class="form-control" value="${customer.phone1}" />
 									</div>
 								</div>
 
@@ -182,7 +183,7 @@
 
 									</div>
 									<div class="col-md-6">
-										<input type="text" class="form-control" value="" />
+										<input type="text" class="form-control" value="${address.address1}" />
 									</div>
 								</div>
 
@@ -192,7 +193,7 @@
 
 									</div>
 									<div class="col-md-6">
-										<input type="text" class="form-control" value="" />
+										<input type="text" class="form-control" value="${address.landmark}" />
 									</div>
 								</div>
 

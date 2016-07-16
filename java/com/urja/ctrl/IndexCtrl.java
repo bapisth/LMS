@@ -1,6 +1,8 @@
 package com.urja.ctrl;
 
 import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,8 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
 
+import com.urja.model.Address;
+import com.urja.model.AddressHome;
 import com.urja.model.Customer;
 import com.urja.model.CustomerHome;
 import com.urja.util.PortalService;
@@ -21,6 +25,7 @@ import com.urja.util.PortalService;
 @WebServlet("/portal")
 public class IndexCtrl extends HttpServlet {
 	private Customer customer;
+	private Address customerAddress;
 	private static final Log log = LogFactory.getLog(IndexCtrl.class);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -57,7 +62,12 @@ public class IndexCtrl extends HttpServlet {
 			case "nextSteps":
 				System.out.println("cmd : " + cmd);
 				customer = new CustomerHome().findById(customerid);
+				System.out.println("------------"+customer.getCustomerid());
+				customerAddress = new Address();
+				customerAddress.setCustomer(customer);
+				Address address = new AddressHome().findByCustomer(customerAddress);
 				request.setAttribute("customer", customer);
+				request.setAttribute("address", address);
 				redirectPath = "laundry.nextSteps";
 				break;
 			case "continueSignUp":

@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 
 import com.urja.model.util.HibernateUtil;
 
@@ -124,12 +126,14 @@ public class AddressHome {
 		
 	}
 
-	public List findByExample(Address instance) {
+	public Address findByCustomer(Address instance) {
 		log.debug("finding Address instance by example");
 		try {
-			List results = sessionFactory.openSession().createCriteria("com.urja.model.Address")
-					.add(Example.create(instance)).list();
-			log.debug("find by example successful, result size: " + results.size());
+			Session openSession = sessionFactory.openSession();
+			Criteria criteria = openSession.createCriteria(Address.class);
+			Criteria addCriteria = criteria.add(Restrictions.eq("customer", instance.getCustomer()));
+			Address results = (Address) addCriteria.uniqueResult();
+			//log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
