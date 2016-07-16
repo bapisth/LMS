@@ -50,54 +50,57 @@
 						</div>
 						<div class="mainServiceContainer">
 							<div class="row service-type-area mainServiceSection" style="border-bottom: 1px dotted #09F;">
-							<!-- <div class=""> -->
-							<div class="col-md-2">
-								<label for="name"> Service Type<span class="color-red">*</span></label>
-							</div>
-							<div class="row form-group">
-								<div class="col-md-4">
-									<select class="form-control">
-										<option>Service Type1</option>
-										<option>Service Type2</option>
-										<option>Service Type3</option>
-									</select>
-								</div>
-							</div>
-							<div class="items">
-								<div class="form-group itemSection" id="itemSectionDiv" >
+									<!-- <div class=""> -->
+									<div class="col-md-2">
+										<label for="name"> Service Type<span class="color-red">*</span></label>
+									</div>
+									<div class="row form-group">
 										<div class="col-md-4">
-											<div class="row">
-												<div class="col-sm-6">
-													<label for="name"> Item Name<span class="color-red">*</span></label>
+											<select class="form-control serviceTypeSelect">
+												<option>Service Type1</option>
+												<option>Service Type2</option>
+												<option>Service Type3</option>
+											</select>
+										</div>
+									</div>
+									<div class="items">
+										<div class="form-group itemSection" id="itemSectionDiv">
+											<div class="col-md-4">
+												<div class="row">
+													<div class="col-sm-6">
+														<label for="name"> Item Name<span
+															class="color-red">*</span></label>
+													</div>
+													<div class="col-sm-6">
+														<input type="text" class="form-control itemNameValue"
+															value="" />
+													</div>
 												</div>
-												<div class="col-sm-6">
-													<input type="text" class="form-control" value="" />
+											</div>
+											<div class="col-md-4">
+												<div class="row">
+													<div class="col-sm-6">
+														<label for="name"> Quantity <span
+															class="color-red">*</span></label>
+													</div>
+													<div class="col-sm-6">
+														<input type="text" class="form-control quantityValue"
+															value="" />
+													</div>
 												</div>
 											</div>
 										</div>
-										<div class="col-md-4">
-											<div class="row">
-												<div class="col-sm-6">
-													<label for="name"> Quantity <span class="color-red">*</span></label>
-												</div>
-												<div class="col-sm-6">
-													<input type="text" class="form-control" value="" />
-												</div>
-											</div>
+										<div class="col-md-4" id="addMoreItemDiv">
+											<!-- <a id="addMoreItem" class="button button-3d  button-rounded button-blue addMoreItem"> -->
+											<a id="addMoreItem" class="btn btn-primary addMoreItem">
+												<i class="icon-plus"></i>Click here to Add more item
+											</a>
 										</div>
 									</div>
-									<div class="col-md-4" id="addMoreItemDiv">
-										<!-- <a id="addMoreItem" class="button button-3d  button-rounded button-blue addMoreItem"> -->
-										<a id="addMoreItem" class="btn btn-primary addMoreItem">
-										<i class="icon-plus"></i>Click here to Add more item</a>
-									</div>
-							</div>
-
-							<!-- </div> -->
 						</div>
 						</div>
 							<div class="form-group">
-								<a href="#" class="button button-3d  button-rounded button-red"
+								<a href="#" class="button button-3d  button-rounded button-red submit"
 									data-toggle="modal" data-target=".popup1">Submit</a>
 								<!-- <a href="#" class="button button-3d nomargin  tab-linker" rel="2">Next</a>-->
 							</div>
