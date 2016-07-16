@@ -237,8 +237,7 @@
 								<p class="text-center">your booking is in progress</p>
 							</div>
 							<div class="form-group center">
-								<a href="#"
-									class="button button-3d  button-rounded button-red nomargin tab-linker"
+								<a class="button button-3d  button-rounded button-red nomargin tab-linker confirm"
 									rel="3">Confirm</a> <a href="#"
 									class="button button-3d nomargin  tab-linker">Cancel</a>
 							</div>
@@ -274,4 +273,6 @@
 		</a>
 	</div>
 </section>
+<input type="hidden" id="customerid" value="${customerid}"/>
+<input type="hidden" id="addressid" value="${address.addressid}"/>
 <script type="text/javascript" src="js/portal/nextStepService.js">

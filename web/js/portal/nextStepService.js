@@ -4,6 +4,9 @@ var itemSectionObjClone  = $('.itemSection').clone(true);
 var addMoreServiceButton = $('#addMoreService');
 var addMoreItem = $('#addMoreItem');
 var itemsObj = $('.items');
+var customerid = $('#customerid').val();
+var addressid = $('#addressid').val();
+var servicesJsonArray = "";
 $(document).ready(function(){
 	$('.addMoreService').click(function(){
 		addNewService();
@@ -21,6 +24,23 @@ $(document).ready(function(){
 	
 	$('.submit').click(function(){
 		createJsonArray();
+	});
+	
+	$('.confirm').click(function() {
+		servicesJsonArray = createJsonArray();
+		$.ajax({
+			url: "BookService",
+			type: "POST",  
+		    dataType: "json",
+		    data: {
+		    	"customerid":customerid,
+				"addressid": addressid,
+				"services":servicesJsonArray
+		    },
+			success: function(jsondata){
+				console.log(jsondata);
+			}
+	   });
 	});
 	//createJsonArray();
 });
@@ -69,8 +89,10 @@ function createJsonArray(){
 			jsonArray += ", ";
 	}
 	jsonArray += "]";
+	servicesJsonArray = jsonArray;
+	console.log(servicesJsonArray);
+	return servicesJsonArray;
 	
-	console.log(jsonArray);
 }
 
 /*function createJSON() {
