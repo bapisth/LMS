@@ -42,66 +42,59 @@
 					<div id="ptab1">
 						<!----bggray--->
 						<div class="bg-gray">
-
-							<div class="service-type-area">
-
-								<div class="row form-group">
-									<div class="col-md-4">
-										<a href="#" class="button button-3d  button-rounded"><i
-											class="icon-plus"></i>Click here to Add more service</a>
-									</div>
-									<div class="col-md-2">
-										<label for="name"> Service Type<span class="color-red">*</span></label>
-									</div>
-									<div class="col-md-6">
-
-										<select class="form-control">
-											<option>Service Type1</option>
-											<option>Service Type2</option>
-											<option>Service Type3</option>
-										</select>
-
-									</div>
-
-
+						<div class="row">
+							<div class="col-md-4 pull-right">
+							<a id="addMoreService" class="button button-3d  button-rounded addMoreService">
+							<i class="icon-plus"></i>Click here to Add more service</a>
+							</div>
+						</div>
+						<div class="mainServiceContainer">
+							<div class="row service-type-area mainServiceSection" style="border-bottom: 1px dotted #09F;">
+							<!-- <div class=""> -->
+							<div class="col-md-2">
+								<label for="name"> Service Type<span class="color-red">*</span></label>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-4">
+									<select class="form-control">
+										<option>Service Type1</option>
+										<option>Service Type2</option>
+										<option>Service Type3</option>
+									</select>
 								</div>
-
-								<div class="row form-group">
-									<div class="col-md-4">
-										<a href="#"
-											class="button button-3d  button-rounded button-blue"><i
-											class="icon-plus"></i>Click here to Add more item</a>
-									</div>
-									<div class="col-md-4">
-										<div class="row">
-											<div class="col-sm-6">
-												<label for="name"> Item Name<span class="color-red">*</span></label>
-
+							</div>
+							<div class="items">
+								<div class="form-group itemSection" id="itemSectionDiv">
+										<div class="col-md-4">
+											<div class="row">
+												<div class="col-sm-6">
+													<label for="name"> Item Name<span class="color-red">*</span></label>
+												</div>
+												<div class="col-sm-6">
+													<input type="text" class="form-control" value="" />
+												</div>
 											</div>
-											<div class="col-sm-6">
-
-												<input type="text" class="form-control" value="pant" />
+										</div>
+										<div class="col-md-4">
+											<div class="row">
+												<div class="col-sm-6">
+													<label for="name"> Quantity <span class="color-red">*</span></label>
+												</div>
+												<div class="col-sm-6">
+													<input type="text" class="form-control" value="" />
+												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-4">
-										<div class="row">
-											<div class="col-sm-6">
-												<label for="name"> Quantity <span class="color-red">*</span></label>
-
-											</div>
-											<div class="col-sm-6">
-
-												<input type="text" class="form-control" value="Shirt" />
-											</div>
-										</div>
+									<div class="col-md-4" id="addMoreItemDiv">
+										<a id="addMoreItem" class="button button-3d  button-rounded button-blue addMoreItem">
+										<i class="icon-plus"></i>Click here to Add more item</a>
 									</div>
-
-								</div>
-
 							</div>
 
-
+							<!-- </div> -->
+						</div>
+						</div>
 							<div class="form-group">
 								<a href="#" class="button button-3d  button-rounded button-red"
 									data-toggle="modal" data-target=".popup1">Submit</a>
@@ -218,95 +211,55 @@
 
 									</div>
 								</div>
-
-
 							</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 							<div class="form-group center">
 								<a href="#"
 									class="button button-3d  button-rounded button-red nomargin tab-linker"
 									rel="3">Place order</a> <a href="#"
 									class="button button-3d nomargin  tab-linker">Cancel</a>
 							</div>
-
 						</div>
-
 						<!----///bggray ptab2--->
 					</div>
 					<div id="ptab3">
 						<!--<div class="alert alert-success">
                                     <strong>Thank You.</strong> Your order will be processed once we verify the Payment.
                                 </div>-->
-
 						<!----bggray ptab3--->
 						<div class="bg-gray">
 							<div class="form-group">
 								<h3 class="text-center">Messages</h3>
 								<p class="text-center">your booking is in progress</p>
 							</div>
-
-
 							<div class="form-group center">
 								<a href="#"
 									class="button button-3d  button-rounded button-red nomargin tab-linker"
 									rel="3">Confirm</a> <a href="#"
 									class="button button-3d nomargin  tab-linker">Cancel</a>
 							</div>
-
 						</div>
-
 						<!----///bggray ptab3--->
 					</div>
 				</div>
 			</div>
 
 			<script>
-				$(function() {
+				$(function(){
 					$("#processTabs").tabs({
 						show : {
 							effect : "fade",
 							duration : 400
 						}
 					});
-					$(".tab-linker").click(
-							function() {
-								$("#processTabs").tabs("option", "active",
-										$(this).attr('rel') - 1);
+					$(".tab-linker").click(function() {
+								$("#processTabs").tabs("option", "active",$(this).attr('rel') - 1);
 								return false;
-							});
+					});
 				});
 			</script>
-
 			<div class="clear"></div>
-
 			<!--//process tabs----->
-
-
-
 		</div>
-
-
-
-
 
 		<a class="button button-full center tright topmargin footer-stick">
 			<div class="container clearfix">
@@ -316,3 +269,4 @@
 		</a>
 	</div>
 </section>
+<script type="text/javascript" src="js/portal/nextStepService.js">
