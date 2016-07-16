@@ -7,6 +7,7 @@ var itemsObj = $('.items');
 var customerid = $('#customerid').val();
 var addressid = $('#addressid').val();
 var servicesJsonArray = "";
+var itemsObjLast = new Object();
 $(document).ready(function(){
 	$('.addMoreService').click(function(){
 		addNewService();
@@ -42,6 +43,8 @@ $(document).ready(function(){
 			}
 	   });
 	});
+	
+	itemsObjLast = $('.items').first();
 	//createJsonArray();
 });
 
@@ -50,7 +53,8 @@ function addItemsToService(obj){
 	var newitemsObj = itemsObjLast.clone(true).find('div#itemSectionDiv').val("").remove();
 	newitemsObj.find('input').val('');
 	newitemsObj.append('<div class="col-md-4"><a class="btn btn-danger removeItem" onclick="removeItemsFromService($(this));"><i class="icon-remove"></i></a></div>');
-	newitemsObj.insertAfter(itemsObjLast);
+	//newitemsObj.insertAfter(itemsObjLast);
+	newitemsObj.appendTo(itemsObjLast);
 }
 
 function addNewService(){
@@ -82,6 +86,11 @@ function createJsonArray(){
 			value["quantity"] = childrenItemsItemSectionArrayObj.querySelector(".quantityValue").value;
 			tempObject.values.push(value);
 		}
+		
+		$(childrenItemsItemSectionArray).each(function(i) {
+		    console.log(i)
+		  });
+		
 		//tempObject.values = [tempDiv.querySelector(".itemNameValue").value, tempDiv.querySelector(".quantityValue").value];
 		var jsonString = JSON.stringify(tempObject);
 		jsonArray += jsonString;
@@ -94,27 +103,3 @@ function createJsonArray(){
 	return servicesJsonArray;
 	
 }
-
-/*function createJSON() {
-    jsonObj = [];
-    //$("input[class=mainServiceContainer]").each(function() {
-    //$(".mainServiceContainer :input").each(function() {
-    $(".mainServiceContainer").each(function() {
-    	item = {}
-        item [email];
-    	if($(this).is("select")){
-    		var email = $(this).val();
-    		item [email];
-    	}
-        var id = $(this).attr("class");
-        var email = $(this).val();
-
-        
-        //item ["email"] = [{"abcd":"hasjd"}, {"Hemndra":"Bapi"}];
-        
-
-        jsonObj.push(item);
-    });
-
-    console.log(JSON.stringify(jsonObj));
-}*/
