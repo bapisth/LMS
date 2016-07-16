@@ -64,7 +64,7 @@
 								</div>
 							</div>
 							<div class="items">
-								<div class="form-group itemSection" id="itemSectionDiv">
+								<div class="form-group itemSection" id="itemSectionDiv" >
 										<div class="col-md-4">
 											<div class="row">
 												<div class="col-sm-6">
@@ -87,7 +87,8 @@
 										</div>
 									</div>
 									<div class="col-md-4" id="addMoreItemDiv">
-										<a id="addMoreItem" class="button button-3d  button-rounded button-blue addMoreItem">
+										<!-- <a id="addMoreItem" class="button button-3d  button-rounded button-blue addMoreItem"> -->
+										<a id="addMoreItem" class="btn btn-primary addMoreItem">
 										<i class="icon-plus"></i>Click here to Add more item</a>
 									</div>
 							</div>
