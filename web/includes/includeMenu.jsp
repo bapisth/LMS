@@ -369,6 +369,7 @@
                             
                             <c:choose>
 								  <c:when test="${customerid gt 0}">
+								  <li><a href="portal?cmd=nextSteps" data-toggle="modal" data-target=".bs-example-modal-sm"><div>Book a Service</div></a></li>
 								    <li><a href="Logout" data-toggle="modal" data-target=".bs-example-modal-sm"><div>LogOut</div></a></li>
 								  </c:when>
 								  <c:otherwise>
