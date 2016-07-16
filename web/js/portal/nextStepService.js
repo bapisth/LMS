@@ -6,10 +6,6 @@ $(document).ready(function(){
 	var addMoreItem = $('#addMoreItem');
 	var itemsObj = $('.items');
 	
-	/*addMoreServiceButton.click(function() {
-		
-	});*/
-	
 	$('.addMoreService').click(function(){
 		addNewService(); //Here Findout the parent and pass to the function
 	});
@@ -18,10 +14,6 @@ $(document).ready(function(){
 		var obj = $(this);
 		addItemsToService(obj);
 	});
-	
-	/*addMoreItem.click(function(){
-		
-	});*/
 	
 	function addItemsToService(obj){
 		var itemsObjLast = obj.parent().parent().last();
