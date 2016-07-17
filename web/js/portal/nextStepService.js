@@ -42,7 +42,6 @@ $(document).ready(function(){
 			}
 	   });
 	});
-	//createJsonArray();
 });
 
 function addItemsToService(obj){
@@ -104,27 +103,3 @@ function createJsonArray(){
 	return servicesJsonArray;
 	
 }
-
-/*function createJSON() {
-    jsonObj = [];
-    //$("input[class=mainServiceContainer]").each(function() {
-    //$(".mainServiceContainer :input").each(function() {
-    $(".mainServiceContainer").each(function() {
-    	item = {}
-        item [email];
-    	if($(this).is("select")){
-    		var email = $(this).val();
-    		item [email];
-    	}
-        var id = $(this).attr("class");
-        var email = $(this).val();
-
-        
-        //item ["email"] = [{"abcd":"hasjd"}, {"Hemndra":"Bapi"}];
-        
-
-        jsonObj.push(item);
-    });
-
-    console.log(JSON.stringify(jsonObj));
-}*/
