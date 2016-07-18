@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2016 at 06:36 PM
+-- Generation Time: Jul 18, 2016 at 08:14 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -135,11 +135,11 @@ INSERT INTO `customer` (`customerid`, `firstname`, `middlename`, `lastname`, `em
 --
 
 CREATE TABLE IF NOT EXISTS `items` (
-  `itemid` int(11) NOT NULL,
+`itemid` int(11) NOT NULL,
   `itemname` varchar(2000) NOT NULL,
   `stampdate` date NOT NULL,
   `stampuser` varchar(2000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -337,6 +337,11 @@ MODIFY `bookingItemId` bigint(20) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `customer`
 MODIFY `customerid` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `items`
+--
+ALTER TABLE `items`
+MODIFY `itemid` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `serviceitems`
 --
