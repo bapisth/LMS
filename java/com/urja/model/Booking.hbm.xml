@@ -1,31 +1,22 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.urja.model.Booking" table="booking" catalog="laundry" optimistic-lock="version">
         <id name="bookingid" type="java.lang.Integer">
             <column name="bookingid" />
             <generator class="identity" />
         </id>
-        <property name="orderid" type="java.lang.Integer">
-            <column name="orderid" />
-        </property>
-        <property name="customerid" type="java.lang.Integer">
+        <many-to-one name="address" class="com.urja.model.Address" fetch="select">
+            <column name="addressid" />
+        </many-to-one>
+        <many-to-one name="customer" class="com.urja.model.Customer" fetch="select">
             <column name="customerid" />
-        </property>
-        <property name="serviceid" type="java.lang.Integer">
-            <column name="serviceid" />
-        </property>
-        <property name="quantity" type="int">
-            <column name="quantity" not-null="true" />
-        </property>
-        <property name="quantityinkg" type="int">
-            <column name="quantityinkg" not-null="true" />
-        </property>
-        <property name="charges" type="int">
-            <column name="charges" not-null="true" />
-        </property>
+        </many-to-one>
+        <many-to-one name="paymentdetail" class="com.urja.model.Paymentdetail" fetch="select">
+            <column name="orderid" />
+        </many-to-one>
         <property name="bookingdatetime" type="timestamp">
             <column name="bookingdatetime" length="19" not-null="true" />
         </property>
@@ -41,9 +32,6 @@
         <property name="delivertime2" type="time">
             <column name="delivertime2" length="8" not-null="true" />
         </property>
-        <property name="addressid" type="java.lang.Integer">
-            <column name="addressid" />
-        </property>
         <property name="status" type="string">
             <column name="status" length="10" not-null="true" />
         </property>
@@ -53,5 +41,11 @@
         <property name="stampuser" type="string">
             <column name="stampuser" length="30" not-null="true" />
         </property>
+        <set name="bookingitemses" table="bookingitems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="bookingid" not-null="true" />
+            </key>
+            <one-to-many class="com.urja.model.Bookingitems" />
+        </set>
     </class>
 </hibernate-mapping>

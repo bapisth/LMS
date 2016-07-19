@@ -1,9 +1,9 @@
 package com.urja.model;
-// Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
+// Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -45,7 +45,6 @@ public class CustomerHome {
 		}
 		return customerId;
 	}
-
 
 	public void persist(Customer transientInstance) {
 		log.debug("persisting Customer instance");
@@ -142,7 +141,7 @@ public class CustomerHome {
 		}
 		return results;
 	}
-
+	
 	public Customer findByPhone1(long phone1) {
 		//log.debug("finding Customer instance by example");
 		Session session = sessionFactory.openSession();

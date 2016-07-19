@@ -1,5 +1,5 @@
 package com.urja.model;
-// Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
+// Generated Jul 19, 2016 11:26:33 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import java.util.HashSet;
@@ -15,17 +15,18 @@ public class Customer implements java.io.Serializable {
 	private String middlename;
 	private String lastname;
 	private String email;
-	private Long phone1;
-	private Long phone2;
+	private long phone1;
+	private long phone2;
 	private Date stampdate;
 	private String stampuser;
-	private Set addresses = new HashSet(0);
 	private Set signups = new HashSet(0);
+	private Set addresses = new HashSet(0);
+	private Set bookings = new HashSet(0);
 
 	public Customer() {
 	}
 
-	public Customer(String firstname, String middlename, String lastname, String email, Long phone1, Long phone2,
+	public Customer(String firstname, String middlename, String lastname, String email, long phone1, long phone2,
 			Date stampdate, String stampuser) {
 		this.firstname = firstname;
 		this.middlename = middlename;
@@ -37,8 +38,8 @@ public class Customer implements java.io.Serializable {
 		this.stampuser = stampuser;
 	}
 
-	public Customer(String firstname, String middlename, String lastname, String email, Long phone1, Long phone2,
-			Date stampdate, String stampuser, Set addresses, Set signups) {
+	public Customer(String firstname, String middlename, String lastname, String email, long phone1, long phone2,
+			Date stampdate, String stampuser, Set signups, Set addresses, Set bookings) {
 		this.firstname = firstname;
 		this.middlename = middlename;
 		this.lastname = lastname;
@@ -47,8 +48,9 @@ public class Customer implements java.io.Serializable {
 		this.phone2 = phone2;
 		this.stampdate = stampdate;
 		this.stampuser = stampuser;
-		this.addresses = addresses;
 		this.signups = signups;
+		this.addresses = addresses;
+		this.bookings = bookings;
 	}
 
 	public Integer getCustomerid() {
@@ -91,19 +93,19 @@ public class Customer implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public Long getPhone1() {
+	public long getPhone1() {
 		return this.phone1;
 	}
 
-	public void setPhone1(Long phone1) {
+	public void setPhone1(long phone1) {
 		this.phone1 = phone1;
 	}
 
-	public Long getPhone2() {
+	public long getPhone2() {
 		return this.phone2;
 	}
 
-	public void setPhone2(Long phone2) {
+	public void setPhone2(long phone2) {
 		this.phone2 = phone2;
 	}
 
@@ -123,6 +125,14 @@ public class Customer implements java.io.Serializable {
 		this.stampuser = stampuser;
 	}
 
+	public Set getSignups() {
+		return this.signups;
+	}
+
+	public void setSignups(Set signups) {
+		this.signups = signups;
+	}
+
 	public Set getAddresses() {
 		return this.addresses;
 	}
@@ -131,12 +141,12 @@ public class Customer implements java.io.Serializable {
 		this.addresses = addresses;
 	}
 
-	public Set getSignups() {
-		return this.signups;
+	public Set getBookings() {
+		return this.bookings;
 	}
 
-	public void setSignups(Set signups) {
-		this.signups = signups;
+	public void setBookings(Set bookings) {
+		this.bookings = bookings;
 	}
 
 }

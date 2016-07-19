@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Bookingitems" table="bookingitems" catalog="laundry" optimistic-lock="version">
+        <id name="bookingItemId" type="java.lang.Long">
+            <column name="bookingItemId" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="booking" class="com.urja.model.Booking" fetch="select">
+            <column name="bookingid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="serviceitems" class="com.urja.model.Serviceitems" fetch="select">
+            <column name="serviceitemid" not-null="true" />
+        </many-to-one>
+        <property name="itemquantity" type="int">
+            <column name="itemquantity" not-null="true" />
+        </property>
+        <property name="totaliteminkg" type="float">
+            <column name="totaliteminkg" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="totalcharges" type="double">
+            <column name="totalcharges" precision="22" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

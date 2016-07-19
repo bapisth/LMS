@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.urja.model.Address" table="address" catalog="laundry" optimistic-lock="version">
         <id name="addressid" type="java.lang.Integer">
@@ -38,5 +38,11 @@
         <property name="stampuser" type="string">
             <column name="stampuser" length="30" />
         </property>
+        <set name="bookings" table="booking" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="addressid" />
+            </key>
+            <one-to-many class="com.urja.model.Booking" />
+        </set>
     </class>
 </hibernate-mapping>

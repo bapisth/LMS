@@ -1,25 +1,30 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.urja.model.Servicegroup" table="servicegroup" catalog="laundry" optimistic-lock="version">
-        <composite-id name="id" class="com.urja.model.ServicegroupId">
-            <key-property name="servicegroupcode" type="int">
-                <column name="servicegroupcode" />
-            </key-property>
-            <key-property name="servicegrouptype" type="string">
-                <column name="servicegrouptype" length="20" />
-            </key-property>
-            <key-property name="servicegroupdesc" type="string">
-                <column name="servicegroupdesc" length="40" />
-            </key-property>
-            <key-property name="stampdate" type="date">
-                <column name="stampdate" length="10" />
-            </key-property>
-            <key-property name="stampuser" type="string">
-                <column name="stampuser" length="30" />
-            </key-property>
-        </composite-id>
+        <id name="servicegroupcode" type="int">
+            <column name="servicegroupcode" />
+            <generator class="assigned" />
+        </id>
+        <property name="servicegrouptype" type="string">
+            <column name="servicegrouptype" length="20" not-null="true" />
+        </property>
+        <property name="servicegroupdesc" type="string">
+            <column name="servicegroupdesc" length="40" not-null="true" />
+        </property>
+        <property name="stampdate" type="date">
+            <column name="stampdate" length="10" not-null="true" />
+        </property>
+        <property name="stampuser" type="string">
+            <column name="stampuser" length="30" not-null="true" />
+        </property>
+        <set name="serviceses" table="services" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="servicegroupcode" not-null="true" />
+            </key>
+            <one-to-many class="com.urja.model.Services" />
+        </set>
     </class>
 </hibernate-mapping>

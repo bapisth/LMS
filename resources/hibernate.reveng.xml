@@ -5,9 +5,12 @@
   <table-filter match-catalog="laundry" match-name="address"/>
   <table-filter match-catalog="laundry" match-name="backofficeuser"/>
   <table-filter match-catalog="laundry" match-name="booking"/>
+  <table-filter match-catalog="laundry" match-name="bookingitems"/>
   <table-filter match-catalog="laundry" match-name="customer"/>
+  <table-filter match-catalog="laundry" match-name="items"/>
   <table-filter match-catalog="laundry" match-name="paymentdetail"/>
   <table-filter match-catalog="laundry" match-name="servicegroup"/>
+  <table-filter match-catalog="laundry" match-name="serviceitems"/>
   <table-filter match-catalog="laundry" match-name="services"/>
   <table-filter match-catalog="laundry" match-name="signup"/>
 </hibernate-reverse-engineering>

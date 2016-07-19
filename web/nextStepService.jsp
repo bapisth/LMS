@@ -58,9 +58,9 @@
 									<div class="row form-group">
 										<div class="col-md-4">
 											<select class="form-control serviceTypeSelect">
-												<option>Service Type1</option>
-												<option>Service Type2</option>
-												<option>Service Type3</option>
+												<option value="1">Service Type1</option>
+												<option value="2">Service Type2</option>
+												<option value="3">Service Type3</option>
 											</select>
 										</div>
 									</div>

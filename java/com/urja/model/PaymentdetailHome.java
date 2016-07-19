@@ -1,5 +1,5 @@
 package com.urja.model;
-// Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
+// Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -85,7 +85,7 @@ public class PaymentdetailHome {
 		}
 	}
 
-	public Paymentdetail findById(com.urja.model.PaymentdetailId id) {
+	public Paymentdetail findById(int id) {
 		log.debug("getting Paymentdetail instance with id: " + id);
 		try {
 			Paymentdetail instance = (Paymentdetail) sessionFactory.getCurrentSession()

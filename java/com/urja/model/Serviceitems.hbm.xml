@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.urja.model.Serviceitems" table="serviceitems" catalog="laundry" optimistic-lock="version">
+        <id name="serviceitemid" type="java.lang.Integer">
+            <column name="serviceitemid" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="items" class="com.urja.model.Items" fetch="select">
+            <column name="itemid" not-null="true" />
+        </many-to-one>
+        <many-to-one name="services" class="com.urja.model.Services" fetch="select">
+            <column name="serviceid" not-null="true" />
+        </many-to-one>
+        <property name="chargesperkg" type="float">
+            <column name="chargesperkg" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="discount" type="float">
+            <column name="discount" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="stampdate" type="int">
+            <column name="stampdate" not-null="true" />
+        </property>
+        <property name="stampuser" type="string">
+            <column name="stampuser" length="2000" not-null="true" />
+        </property>
+        <set name="bookingitemses" table="bookingitems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serviceitemid" not-null="true" />
+            </key>
+            <one-to-many class="com.urja.model.Bookingitems" />
+        </set>
+    </class>
+</hibernate-mapping>

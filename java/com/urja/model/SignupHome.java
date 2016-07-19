@@ -1,9 +1,9 @@
 package com.urja.model;
-// Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
+// Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -125,7 +125,7 @@ public class SignupHome {
 		}
 		return results;
 	}
-
+	
 	public boolean checkValidLogin(Long phone1, String password) {
 		log.info("-------------------------checkValidLogin()");
 		Session session = sessionFactory.openSession();

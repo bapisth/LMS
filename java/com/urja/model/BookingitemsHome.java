@@ -10,13 +10,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Backofficeuser.
- * @see com.urja.model.Backofficeuser
+ * Home object for domain model class Bookingitems.
+ * @see com.urja.model.Bookingitems
  * @author Hibernate Tools
  */
-public class BackofficeuserHome {
+public class BookingitemsHome {
 
-	private static final Log log = LogFactory.getLog(BackofficeuserHome.class);
+	private static final Log log = LogFactory.getLog(BookingitemsHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -29,8 +29,8 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public void persist(Backofficeuser transientInstance) {
-		log.debug("persisting Backofficeuser instance");
+	public void persist(Bookingitems transientInstance) {
+		log.debug("persisting Bookingitems instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -40,8 +40,8 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public void attachDirty(Backofficeuser instance) {
-		log.debug("attaching dirty Backofficeuser instance");
+	public void attachDirty(Bookingitems instance) {
+		log.debug("attaching dirty Bookingitems instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -51,8 +51,8 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public void attachClean(Backofficeuser instance) {
-		log.debug("attaching clean Backofficeuser instance");
+	public void attachClean(Bookingitems instance) {
+		log.debug("attaching clean Bookingitems instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -62,8 +62,8 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public void delete(Backofficeuser persistentInstance) {
-		log.debug("deleting Backofficeuser instance");
+	public void delete(Bookingitems persistentInstance) {
+		log.debug("deleting Bookingitems instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -73,10 +73,10 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public Backofficeuser merge(Backofficeuser detachedInstance) {
-		log.debug("merging Backofficeuser instance");
+	public Bookingitems merge(Bookingitems detachedInstance) {
+		log.debug("merging Bookingitems instance");
 		try {
-			Backofficeuser result = (Backofficeuser) sessionFactory.getCurrentSession().merge(detachedInstance);
+			Bookingitems result = (Bookingitems) sessionFactory.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -85,11 +85,11 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public Backofficeuser findById(com.urja.model.BackofficeuserId id) {
-		log.debug("getting Backofficeuser instance with id: " + id);
+	public Bookingitems findById(java.lang.Long id) {
+		log.debug("getting Bookingitems instance with id: " + id);
 		try {
-			Backofficeuser instance = (Backofficeuser) sessionFactory.getCurrentSession()
-					.get("com.urja.model.Backofficeuser", id);
+			Bookingitems instance = (Bookingitems) sessionFactory.getCurrentSession().get("com.urja.model.Bookingitems",
+					id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -102,10 +102,10 @@ public class BackofficeuserHome {
 		}
 	}
 
-	public List findByExample(Backofficeuser instance) {
-		log.debug("finding Backofficeuser instance by example");
+	public List findByExample(Bookingitems instance) {
+		log.debug("finding Bookingitems instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Backofficeuser")
+			List results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Bookingitems")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;

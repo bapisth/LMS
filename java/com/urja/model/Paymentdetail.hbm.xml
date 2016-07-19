@@ -1,31 +1,36 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.urja.model.Paymentdetail" table="paymentdetail" catalog="laundry" optimistic-lock="version">
-        <composite-id name="id" class="com.urja.model.PaymentdetailId">
-            <key-property name="orderid" type="int">
+        <id name="orderid" type="int">
+            <column name="orderid" />
+            <generator class="assigned" />
+        </id>
+        <property name="billedamount" type="double">
+            <column name="billedamount" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="paidamount" type="double">
+            <column name="paidamount" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="paymenttype" type="string">
+            <column name="paymenttype" length="20" not-null="true" />
+        </property>
+        <property name="paidinfullflag" type="boolean">
+            <column name="paidinfullflag" not-null="true" />
+        </property>
+        <property name="stampdate" type="date">
+            <column name="stampdate" length="10" not-null="true" />
+        </property>
+        <property name="stampuser" type="string">
+            <column name="stampuser" length="30" not-null="true" />
+        </property>
+        <set name="bookings" table="booking" inverse="true" lazy="true" fetch="select">
+            <key>
                 <column name="orderid" />
-            </key-property>
-            <key-property name="billedamount" type="int">
-                <column name="billedamount" />
-            </key-property>
-            <key-property name="paidamount" type="int">
-                <column name="paidamount" />
-            </key-property>
-            <key-property name="paymenttype" type="string">
-                <column name="paymenttype" length="20" />
-            </key-property>
-            <key-property name="paidinfullflag" type="boolean">
-                <column name="paidinfullflag" />
-            </key-property>
-            <key-property name="stampdate" type="date">
-                <column name="stampdate" length="10" />
-            </key-property>
-            <key-property name="stampuser" type="string">
-                <column name="stampuser" length="30" />
-            </key-property>
-        </composite-id>
+            </key>
+            <one-to-many class="com.urja.model.Booking" />
+        </set>
     </class>
 </hibernate-mapping>

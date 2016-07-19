@@ -1,5 +1,5 @@
 package com.urja.model;
-// Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
+// Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 
 import com.urja.model.util.HibernateUtil;
+import com.urja.model.Address;
 
 /**
  * Home object for domain model class Address.
@@ -125,7 +126,7 @@ public class AddressHome {
 		}
 		
 	}
-
+	
 	public Address findByCustomer(Address instance) {
 		log.debug("finding Address instance by example");
 		try {
@@ -134,6 +135,19 @@ public class AddressHome {
 			Criteria addCriteria = criteria.add(Restrictions.eq("customer", instance.getCustomer()));
 			Address results = (Address) addCriteria.uniqueResult();
 			//log.debug("find by example successful, result size: " + results.size());
+			return results;
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+	}
+
+	public List findByExample(Address instance) {
+		log.debug("finding Address instance by example");
+		try {
+			List results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Address")
+					.add(Example.create(instance)).list();
+			log.debug("find by example successful, result size: " + results.size());
 			return results;
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);

@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.urja.model.Services" table="services" catalog="laundry" optimistic-lock="version">
         <id name="serviceid" type="java.lang.Integer">
             <column name="serviceid" />
             <generator class="identity" />
         </id>
-        <property name="servicegroupcode" type="int">
+        <many-to-one name="servicegroup" class="com.urja.model.Servicegroup" fetch="select">
             <column name="servicegroupcode" not-null="true" />
-        </property>
+        </many-to-one>
         <property name="servicename" type="string">
             <column name="servicename" length="40" not-null="true" />
         </property>
@@ -20,17 +20,17 @@
         <property name="servicedesc" type="string">
             <column name="servicedesc" length="50" not-null="true" />
         </property>
-        <property name="chargesperkg" type="int">
-            <column name="chargesperkg" not-null="true" />
-        </property>
-        <property name="discount" type="java.lang.Integer">
-            <column name="discount" />
-        </property>
         <property name="stampdate" type="date">
             <column name="stampdate" length="10" not-null="true" />
         </property>
         <property name="stampuser" type="string">
             <column name="stampuser" length="30" not-null="true" />
         </property>
+        <set name="serviceitemses" table="serviceitems" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="serviceid" not-null="true" />
+            </key>
+            <one-to-many class="com.urja.model.Serviceitems" />
+        </set>
     </class>
 </hibernate-mapping>

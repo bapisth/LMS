@@ -1,5 +1,5 @@
 package com.urja.model;
-// Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final
+// Generated Jul 19, 2016 11:26:33 PM by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 

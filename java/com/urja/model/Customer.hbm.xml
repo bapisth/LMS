@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jul 9, 2016 1:51:15 AM by Hibernate Tools 4.3.1.Final -->
+<!-- Generated Jul 19, 2016 11:26:34 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
     <class name="com.urja.model.Customer" table="customer" catalog="laundry" optimistic-lock="version">
         <id name="customerid" type="java.lang.Integer">
@@ -20,10 +20,10 @@
         <property name="email" type="string">
             <column name="email" length="20" not-null="true" />
         </property>
-        <property name="phone1" type="java.lang.Long">
+        <property name="phone1" type="long">
             <column name="phone1" not-null="true" />
         </property>
-        <property name="phone2" type="java.lang.Long">
+        <property name="phone2" type="long">
             <column name="phone2" not-null="true" />
         </property>
         <property name="stampdate" type="date">
@@ -32,17 +32,23 @@
         <property name="stampuser" type="string">
             <column name="stampuser" length="30" not-null="true" />
         </property>
+        <set name="signups" table="signup" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="customerid" unique="true" />
+            </key>
+            <one-to-many class="com.urja.model.Signup" />
+        </set>
         <set name="addresses" table="address" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="customerid" />
             </key>
             <one-to-many class="com.urja.model.Address" />
         </set>
-        <set name="signups" table="signup" inverse="true" lazy="true" fetch="select">
+        <set name="bookings" table="booking" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="customerid" unique="true" />
+                <column name="customerid" />
             </key>
-            <one-to-many class="com.urja.model.Signup" />
+            <one-to-many class="com.urja.model.Booking" />
         </set>
     </class>
 </hibernate-mapping>
