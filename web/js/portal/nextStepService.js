@@ -31,7 +31,7 @@ var newItemRow = '<div class="form-group itemSection" id="itemSectionDiv">'+
 '</div>'+
 '</div>'+
 '</div>'+
-'<div class="col-md-4"><a class="btn btn-danger removeItem" onclick="removeItemsFromService($(this));"><i class="icon-remove"></i></a></div>';
+'<div class="col-md-4 btnHolderDiv"><a class="btn btn-danger removeItem" onclick="removeItemsFromService($(this));"><i class="icon-remove"></i></a></div>';
 
 
 var newServiceRow = ''+
@@ -101,9 +101,10 @@ $(document).ready(function(){
 		addItemsToService(obj);
 	});
 	
-	$('.removeItem').click(function(){
+	$('.removeItem').click(function(e){
 		var obj = $(this);
 		removeItemsFromService(obj);
+		//e.preventDefault();
 	});
 	
 	$('.submit').click(function(){
@@ -148,9 +149,11 @@ function addNewService(){
 }
 
 function removeItemsFromService(obj){
-	items=obj.parent().parent('.items');
+	/*items=obj.parent().parent('.items');
 	items.children().last().remove();
-	items.children().last().remove();
+	items.children().last().remove();*/
+	obj.parent().prev("div.itemSection").remove();
+	obj.parent().remove();
 }
 
 function createJsonArray(){
