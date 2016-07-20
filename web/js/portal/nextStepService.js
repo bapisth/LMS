@@ -7,11 +7,95 @@ var itemsObj = $('.items');
 var customerid = $('#customerid').val();
 var addressid = $('#addressid').val();
 var servicesJsonArray = "";
+var divCount=0;
+
+var newItemRow = '<div class="form-group itemSection" id="itemSectionDiv">'+
+'<div class="col-md-4">'+
+'<div class="row">'+
+	'<div class="col-sm-6">'+
+		'<label for="name"> Item Name<span class="color-red">*</span></label>'+
+	'</div>'+
+	'<div class="col-sm-6">'+
+		'<input type="text" class="form-control itemNameValue" value="">'+
+	'</div>'+
+'</div>'+
+'</div>'+
+'<div class="col-md-4">'+
+'<div class="row">'+
+	'<div class="col-sm-6">'+
+		'<label for="name"> Quantity <span class="color-red">*</span></label>'+
+	'</div>'+
+	'<div class="col-sm-6">'+
+		'<input type="text" class="form-control quantityValue" value="">'+
+	'</div>'+
+'</div>'+
+'</div>'+
+'</div>'+
+'<div class="col-md-4"><a class="btn btn-danger removeItem" onclick="removeItemsFromService($(this));"><i class="icon-remove"></i></a></div>';
+
+
+var newServiceRow = ''+
+'<div class="row service-type-area mainServiceSection" style="border-bottom: 1px dotted #09F;">'+
+'<div class="col-md-2">'+
+	'<label for="name"> Service Type<span class="color-red">*</span></label>'+
+'</div>'+
+'<div class="row form-group">'+
+	'<div class="col-md-4">'+
+		'<select class="form-control serviceTypeSelect">'+
+			'<option value="1">Service Type1</option>'+
+			'<option value="2">Service Type2</option>'+
+			'<option value="3">Service Type3</option>'+
+		'</select>'+
+	'</div>'+
+'</div>'+
+'<div class="items">'+
+	'<div class="form-group itemSection" id="itemSectionDiv">'+
+		'<div class="col-md-4">'+
+			'<div class="row">'+
+				'<div class="col-sm-6">'+
+					'<label for="name"> Item Name<span class="color-red">*</span></label>'+
+				'</div>'+
+				'<div class="col-sm-6">'+
+					'<input type="text" class="form-control itemNameValue" value="">'+
+				'</div>'+
+			'</div>'+
+		'</div>'+
+		'<div class="col-md-4">'+
+			'<div class="row">'+
+				'<div class="col-sm-6">'+
+					'<label for="name"> Quantity <span class="color-red">*</span></label>'+
+				'</div>'+
+				'<div class="col-sm-6">'+
+					'<input type="text" class="form-control quantityValue" value="">'+
+				'</div>'+
+			'</div>'+
+		'</div>'+
+	'</div>'+
+	'<div class="col-md-4" id="addMoreItemDiv">'+
+		'<a id="addMoreItem" class="btn btn-primary addMoreItem"> <i class="icon-plus"></i>Click here to Add more item'+
+'</a>'
+	'</div>'+
+'</div>'+
+'</div>';
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 $(document).ready(function(){
 	$('.addMoreService').click(function(){
 		addNewService();
 	});
-	
+	$('.mainServiceContainerDummy').hide();
 	$('.addMoreItem').click(function(){
 		var obj = $(this);
 		addItemsToService(obj);
@@ -46,20 +130,27 @@ $(document).ready(function(){
 
 function addItemsToService(obj){
 	var itemsObjLast = obj.parent().parent().last();
-	var newitemsObj = itemsObjLast.clone(true).find('div#itemSectionDiv').val("").remove();
+	/*var newitemsObj = itemsObjLast.clone(true).find('div#itemSectionDiv').val("").remove();
 	newitemsObj.find('input').val('');
-	newitemsObj.append('<div class="col-md-4"><a class="btn btn-danger removeItem" onclick="removeItemsFromService($(this));"><i class="icon-remove"></i></a></div>');
-	newitemsObj.insertAfter(itemsObjLast);
+	newitemsObj.append('<div class="col-md-4"><a class="btn btn-danger removeItem" onclick="removeItemsFromService($(this));"><i class="icon-remove"></i></a></div>');*/
+	
+	//newitemsObj.insertAfter(itemsObjLast);
+	itemsObjLast.append(newItemRow);
+	
 }
 
 function addNewService(){
 	var mainServiceContainerObjLast = mainServiceContainerObj.last();
-	var newServiceContainerObj = mainServiceContainerObjLast.clone(true);
+	var newServiceContainerObj = mainServiceContainerObjLast.clone(true);//.find('> div.mainServiceSection > div.items > div.itemSection').first();
+	newServiceContainerObj.find('input').val('');
 	newServiceContainerObj.insertAfter(mainServiceContainerObjLast);
+	//mainServiceContainerObjLast.append(newServiceContainerObj);
 }
 
 function removeItemsFromService(obj){
-	obj.parent().parent().remove();
+	items=obj.parent().parent('.items');
+	items.children().last().remove();
+	items.children().last().remove();
 }
 
 function createJsonArray(){
