@@ -5,6 +5,7 @@ import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -40,6 +41,19 @@ public class ServiceitemsHome {
 			session.close();
 		}
 		return serviceItemsId;
+	}
+	
+	public List<Serviceitems> getAllServiceItems(){
+		log.info("getAllItems() :Getting all the itmes!!");
+		try{
+			Session session = sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(Serviceitems.class);
+			List<Serviceitems> serviceItems = criteria.list();
+			return serviceItems;
+		}catch(RuntimeException re){
+			log.error("getting all the elements failed!", re);
+			throw re;
+		}
 	}
 
 	public void persist(Serviceitems transientInstance) {

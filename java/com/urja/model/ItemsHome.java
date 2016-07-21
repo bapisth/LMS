@@ -5,9 +5,14 @@ import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+
+import com.urja.model.util.HibernateUtil;
 
 /**
  * Home object for domain model class Items.
@@ -18,14 +23,18 @@ public class ItemsHome {
 
 	private static final Log log = LogFactory.getLog(ItemsHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
-
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+	
+	public List<Items> getAllItems(){
+		log.info("getAllItems() :Getting all the itmes!!");
+		try{
+			Session session = sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(Items.class);
+			List<Items> items = criteria.list();
+			return items;
+		}catch(RuntimeException re){
+			log.error("getting all the elements failed!", re);
+			throw re;
 		}
 	}
 

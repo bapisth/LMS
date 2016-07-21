@@ -3,6 +3,7 @@ package com.urja.ctrl;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +17,15 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
 
+import com.google.common.base.Optional;
+import com.google.common.cache.LoadingCache;
 import com.urja.model.Address;
 import com.urja.model.AddressHome;
 import com.urja.model.Customer;
 import com.urja.model.CustomerHome;
+import com.urja.model.Items;
+import com.urja.model.Serviceitems;
+import com.urja.model.Services;
 import com.urja.util.PortalService;
 
 @WebServlet("/portal")
@@ -48,6 +54,47 @@ public class IndexCtrl extends HttpServlet {
 		
 		System.out.println("customer ID======="+customerid);
 		System.out.println("customerName======="+customerName);
+		
+		//Testing Cache.....
+		LoadingCache<Integer, Optional<List<Items>>> itemsLoadingCache = PortalService.getItemsLoadingCache();
+		try {
+			Optional<List<Items>> optional = itemsLoadingCache.get(1);
+			List<Items> list = optional.get();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+				Items items = (Items) iterator.next();
+				System.out.println("========"+items.getItemname()+"==========");
+			}
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		LoadingCache<Integer, Optional<List<Services>>> servicesLoadingCache = PortalService.getServicesLoadingCache();
+		try {
+			Optional<List<Services>> optional = servicesLoadingCache.get(1);
+			List<Services> list = optional.get();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+				Services services = (Services) iterator.next();
+				System.out.println("<<<<<---------"+services.getServicename());
+			}
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		LoadingCache<Integer, Optional<List<Serviceitems>>> serviceItemsLoadingCache = PortalService.getServiceItemsLoadingCache();
+		try {
+			Optional<List<Serviceitems>> optional = serviceItemsLoadingCache.get(1);
+			List<Serviceitems> list = optional.get();
+			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
+				Serviceitems serviceitems = (Serviceitems) iterator.next();
+				System.out.println("-->>>>>>>>"+serviceitems.getItems().getItemname()+"<<<<<<<<<<<<");
+			}
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Cache Testing Completed
 
 		log.info("portal page");
 

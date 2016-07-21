@@ -5,9 +5,13 @@ import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+
+import com.urja.model.util.HibernateUtil;
 
 /**
  * Home object for domain model class Services.
@@ -18,15 +22,20 @@ public class ServicesHome {
 
 	private static final Log log = LogFactory.getLog(ServicesHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
+	public List<Services> getAllServices() {
+		log.debug("getting all the services available!!");
+		try{
+			Session session = sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(Services.class);
+			return criteria.list();
+		}catch(RuntimeException re){
+			log.error("Error getting all the services!!");
+			throw re;
 		}
+		
+		
 	}
 
 	public void persist(Services transientInstance) {
@@ -101,10 +110,10 @@ public class ServicesHome {
 		}
 	}
 
-	public List findByExample(Services instance) {
+	public List<Services> findByExample(Services instance) {
 		log.debug("finding Services instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Services")
+			List<Services> results = sessionFactory.getCurrentSession().createCriteria("com.urja.model.Services")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: " + results.size());
 			return results;
