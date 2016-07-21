@@ -72,7 +72,7 @@ var newServiceRow = ''+
 		'</div>'+
 	'</div>'+
 	'<div class="col-md-4" id="addMoreItemDiv">'+
-		'<a id="addMoreItem" class="btn btn-primary addMoreItem"> <i class="icon-plus"></i>Click here to Add more item'+
+		'<a id="addMoreItem" class="btn btn-primary addMoreItem" onclick="addItemsToService($(this));"> <i class="icon-plus"></i>Click here to Add more item'+
 '</a>'
 	'</div>'+
 '</div>'+
@@ -141,28 +141,21 @@ function addItemsToService(obj){
 }
 
 function addNewService(){
-	var mainServiceContainerObjLast = mainServiceContainerObj.last();
-	var newServiceContainerObj = mainServiceContainerObjLast.clone(true);//.find('> div.mainServiceSection > div.items > div.itemSection').first();
-	newServiceContainerObj.find('input').val('');
-	newServiceContainerObj.insertAfter(mainServiceContainerObjLast);
-	//mainServiceContainerObjLast.append(newServiceContainerObj);
+	mainServiceContainerObj.append(newServiceRow);
 }
 
 function removeItemsFromService(obj){
-	/*items=obj.parent().parent('.items');
-	items.children().last().remove();
-	items.children().last().remove();*/
 	obj.parent().prev("div.itemSection").remove();
 	obj.parent().remove();
 }
 
 function createJsonArray(){
 	var jsonArray = "[";
-	var containerArr = $(".mainServiceContainer");
+	var containerArr = $(".mainServiceContainer").children();
 	for(i=0; i<containerArr.length; i++){
 		var tempDiv = containerArr[i];
 		//var childrenDiv = tempDiv.children[0];
-		var childrenItemsItemSectionArray =  $('> div.mainServiceSection > div.items > div.itemSection', tempDiv);
+		var childrenItemsItemSectionArray =  $('> div.items > div.itemSection', tempDiv);
 		
 		var tempObject = new Object();
 		
