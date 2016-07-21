@@ -1,6 +1,7 @@
 package com.urja.ctrl;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,17 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+import com.urja.model.Address;
+import com.urja.model.AddressHome;
+import com.urja.model.Booking;
+import com.urja.model.BookingHome;
+import com.urja.model.Bookingitems;
+import com.urja.model.BookingitemsHome;
+import com.urja.model.Customer;
+import com.urja.model.CustomerHome;
+import com.urja.model.Items;
+import com.urja.model.Serviceitems;
+import com.urja.model.ServiceitemsHome;
 import com.urja.util.PortalService;
 
 /**
@@ -42,17 +54,55 @@ public class BookService extends HttpServlet {
 		int customerId = PortalService.getInt("customerid");
 		int addressId = PortalService.getInt("addressid");
 		String services = PortalService.getString("services");
+		Customer existingCustomer = new CustomerHome().findById(customerId);
+		Address existingAddressForExistingCustomer = new AddressHome().findById(addressId);
 		try {
 			if(!services.isEmpty()){
 				JSONArray servicesJsonArray = new JSONArray(services);
 				for (int i = 0; i < servicesJsonArray.length(); i++) {
 					JSONObject object = servicesJsonArray.getJSONObject(i);
-					System.out.println("-------------"+object.getString("serviceType"));
+					String serviceType = object.getString("serviceType");
+					System.out.println("-------------"+serviceType+"--------------------------");
 					JSONArray valueArr  = object.getJSONArray("values");
 					for(int j=0; j < valueArr.length(); j++){
 						JSONObject valueObject = valueArr.getJSONObject(j);
-						System.out.println("-------------"+valueObject.getString("itemname"));
-						System.out.println("-------------"+valueObject.getString("quantity"));
+						String itemName = valueObject.getString("itemname");
+						
+						String quantity = valueObject.getString("quantity");
+						System.out.println("-------------"+itemName);
+						System.out.println("-------------"+quantity);
+						
+						Booking booking = new Booking();
+						booking.setAddress(existingAddressForExistingCustomer);
+						booking.setCustomer(existingCustomer);
+						booking.setBookingdatetime(new Date());
+						booking.setPickuptime1(new Date());
+						booking.setPickuptime2(new Date());
+						booking.setDelivertime1(new Date());
+						booking.setDelivertime2(new Date());
+						booking.setStatus("P");
+						booking.setStampuser(existingCustomer.getFirstname());
+						booking.setStampdate(new Date());
+						Integer bookingId = new BookingHome().Save(booking);
+						booking.setBookingid(bookingId);
+						
+						/*Items items = new Items();
+						items.setItemname(itemName);*/
+						
+						
+						Serviceitems serviceitems = new Serviceitems();
+						/*serviceitems.setItems(items);
+						serviceitems.setItems(items);
+						Integer serviceItemsId = new ServiceitemsHome().Save(serviceitems);*/
+						serviceitems.setServiceitemid(Integer.valueOf(serviceType));
+						//serviceitems.set
+						Bookingitems bookingitems = new Bookingitems();
+						bookingitems.setBooking(booking);
+						bookingitems.setServiceitems(serviceitems);
+						bookingitems.setItemquantity(Integer.valueOf(quantity));
+						
+						new BookingitemsHome().persist(bookingitems);
+					
 					}
 				}
 			}

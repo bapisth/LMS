@@ -6,8 +6,12 @@ import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+
+import com.urja.model.util.HibernateUtil;
 
 /**
  * Home object for domain model class Bookingitems.
@@ -18,25 +22,24 @@ public class BookingitemsHome {
 
 	private static final Log log = LogFactory.getLog(BookingitemsHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
-		try {
-			return (SessionFactory) new InitialContext().lookup("SessionFactory");
-		} catch (Exception e) {
-			log.error("Could not locate SessionFactory in JNDI", e);
-			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
-		}
-	}
+	
 
 	public void persist(Bookingitems transientInstance) {
 		log.debug("persisting Bookingitems instance");
+		Session openSession = sessionFactory.openSession();
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			
+			Transaction transaction = openSession.beginTransaction();
+			openSession.persist(transientInstance);
+			transaction.commit();
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
 			throw re;
+		}finally {
+			openSession.close();
 		}
 	}
 

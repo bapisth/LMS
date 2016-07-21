@@ -6,8 +6,12 @@ import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+
+import com.urja.model.util.HibernateUtil;
 
 /**
  * Home object for domain model class Booking.
@@ -18,21 +22,21 @@ public class BookingHome {
 
 	private static final Log log = LogFactory.getLog(BookingHome.class);
 
-	private final SessionFactory sessionFactory = getSessionFactory();
+	private final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
+	/*protected SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext().lookup("SessionFactory");
 		} catch (Exception e) {
 			log.error("Could not locate SessionFactory in JNDI", e);
 			throw new IllegalStateException("Could not locate SessionFactory in JNDI");
 		}
-	}
+	}*/
 
 	public void persist(Booking transientInstance) {
 		log.debug("persisting Booking instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -112,5 +116,23 @@ public class BookingHome {
 			log.error("find by example failed", re);
 			throw re;
 		}
+	}
+	
+	public Integer Save(Booking booking) {
+		log.debug("persisting Customer instance");
+		Session session = sessionFactory.openSession();
+		Integer bookingId = new Integer(0);
+		try {
+			Transaction transaction = session.beginTransaction();
+			bookingId = (Integer)session.save(booking);
+			transaction.commit();
+			log.debug("persist successful");
+		} catch (RuntimeException re) {
+			log.error("persist failed", re);
+			throw re;
+		}finally {
+			session.close();
+		}
+		return bookingId;
 	}
 }
