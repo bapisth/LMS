@@ -8,6 +8,16 @@
 			<put-attribute name="header" value="/includes/includeMenu.jsp" />
 			<put-attribute name="footer" value="/includes/includeFooter.jsp" />
 		</definition>
+		
+		<definition name="commonAdminTemplate" template="/templateAdmin.jsp">
+			<put-attribute name="title" value="Laundry Admin" />
+			<put-attribute name="header" value="/includes/includeAdminHeader.jsp" />
+			<put-attribute name="sideMenu" value="/includes/includeAdminSideMenu.jsp" />
+			<put-attribute name="pageHeader" value="/includes/includeAdminPageHeader.jsp" />
+			<put-attribute name="footer" value="/includes/includeAdminFooter.jsp" />
+			<put-attribute name="subview" value="/includes/includeAdminSubView.jsp" />						  
+		</definition>
+		
 		<definition name="laundry.testSteps" extends="commonTemplate">
 			<put-attribute name="body" value="/testSteps.jsp" />
 		</definition>
@@ -22,5 +32,11 @@
 		</definition>
 		<definition name="laundry.nextSteps" extends="commonTemplate">
 			<put-attribute name="body" value="/nextStepService.jsp" />
+		</definition>
+		
+		
+		<!-- Admin Session -->
+		<definition name="laundry.bookingDetails" extends="commonAdminTemplate">
+			<put-attribute name="body" value="/admin/bookingDetails.jsp" />
 		</definition>
 	</tiles-definitions>
