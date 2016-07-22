@@ -55,46 +55,32 @@ public class IndexCtrl extends HttpServlet {
 		System.out.println("customer ID======="+customerid);
 		System.out.println("customerName======="+customerName);
 		
-		//Testing Cache.....
 		LoadingCache<Integer, Optional<List<Items>>> itemsLoadingCache = PortalService.getItemsLoadingCache();
 		try {
 			Optional<List<Items>> optional = itemsLoadingCache.get(1);
-			List<Items> list = optional.get();
-			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-				Items items = (Items) iterator.next();
-				System.out.println("========"+items.getItemname()+"==========");
-			}
+			List<Items> items = optional.get();
+			 session.setAttribute("itemsCache", items);
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		LoadingCache<Integer, Optional<List<Services>>> servicesLoadingCache = PortalService.getServicesLoadingCache();
 		try {
 			Optional<List<Services>> optional = servicesLoadingCache.get(1);
-			List<Services> list = optional.get();
-			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-				Services services = (Services) iterator.next();
-				System.out.println("<<<<<---------"+services.getServicename());
-			}
+			List<Services> services = optional.get();
+			session.setAttribute("servicesCache", services);
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		LoadingCache<Integer, Optional<List<Serviceitems>>> serviceItemsLoadingCache = PortalService.getServiceItemsLoadingCache();
 		try {
 			Optional<List<Serviceitems>> optional = serviceItemsLoadingCache.get(1);
-			List<Serviceitems> list = optional.get();
-			for (Iterator iterator = list.iterator(); iterator.hasNext();) {
-				Serviceitems serviceitems = (Serviceitems) iterator.next();
-				System.out.println("-->>>>>>>>"+serviceitems.getItems().getItemname()+"<<<<<<<<<<<<");
-			}
+			List<Serviceitems> serviceItems = optional.get();
+			session.setAttribute("serviceItemsCache", serviceItems);
 		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//Cache Testing Completed
 
 		log.info("portal page");
 

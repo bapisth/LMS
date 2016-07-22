@@ -33,7 +33,9 @@ public class PortalService {
 	private static final Log log = LogFactory.getLog(PortalService.class);
 	private static LoadingCache<Integer, Optional<List<Items>>> itemsLoadingCache;
 	private static LoadingCache<Integer, Optional<List<Services>>> servicesLoadingCache;
-	private static LoadingCache<Integer, Optional<List<Serviceitems>>> serviceItemsLoadingCache; 
+	private static LoadingCache<Integer, Optional<List<Serviceitems>>> serviceItemsLoadingCache;
+	private static int EXPIRE_PRODUCT_AFTER_1_DAY = 1;
+	private static int REFRESH_PRODUCT_AFTER_5_SECONDS = 5;
 	
 	public static void setRequest(HttpServletRequest request, HttpSession session){
 		PortalService.request = request;
@@ -89,7 +91,8 @@ public class PortalService {
 		log.info("PortalService: Initializing the Items Cache!!");
 		System.out.println("PortalService: Initializing the Items Cache!!");
 		itemsLoadingCache = CacheBuilder.newBuilder()
-    			.expireAfterAccess(24, TimeUnit.HOURS)
+    			.expireAfterWrite(EXPIRE_PRODUCT_AFTER_1_DAY, TimeUnit.DAYS)
+    			.refreshAfterWrite(REFRESH_PRODUCT_AFTER_5_SECONDS, TimeUnit.SECONDS)
     			.maximumSize(1000)
     			.build(new CacheLoader<Integer, Optional<List<Items>>>(){
 
@@ -110,7 +113,8 @@ public class PortalService {
 		log.info("PortalService: Initializing the Services Cache!!");
 		System.out.println("PortalService: Initializing the Services Cache!!");
 		servicesLoadingCache = CacheBuilder.newBuilder()
-				.expireAfterAccess(24, TimeUnit.HOURS)
+				.expireAfterWrite(EXPIRE_PRODUCT_AFTER_1_DAY, TimeUnit.DAYS)
+    			.refreshAfterWrite(REFRESH_PRODUCT_AFTER_5_SECONDS, TimeUnit.SECONDS)
 				.maximumSize(1000)
 				.build(new CacheLoader<Integer, Optional<List<Services>>>(){
 
@@ -123,18 +127,19 @@ public class PortalService {
 				});
 	}
 	
-	public static void initializeServiceItemsCache(){
+	public static void initializeServiceItemsByServiceIdCache(){
 		log.info("PortalService: Initializing the Serviceitems Cache!!");
 		System.out.println("PortalService: Initializing the Serviceitems Cache!!");
 		serviceItemsLoadingCache = CacheBuilder.newBuilder()
-				.expireAfterAccess(24, TimeUnit.HOURS)
+				.expireAfterWrite(EXPIRE_PRODUCT_AFTER_1_DAY, TimeUnit.DAYS)
+    			.refreshAfterWrite(REFRESH_PRODUCT_AFTER_5_SECONDS, TimeUnit.SECONDS)
 				.maximumSize(1000)
 				.build(new CacheLoader<Integer, Optional<List<Serviceitems>>>(){
 
 					@Override
-					public Optional<List<Serviceitems>> load(Integer key) throws Exception {
-						// TODO Auto-generated method stub
-						List<Serviceitems> serviceitems = new ServiceitemsHome().getAllServiceItems();
+					public Optional<List<Serviceitems>> load(Integer serviceID) throws Exception {
+						System.out.println("====================Serviceid:"+serviceID);
+						List<Serviceitems> serviceitems = new ServiceitemsHome().getServiceItemsByServiceId(serviceID);
 						Optional<List<Serviceitems>> optionalServiceItems = Optional.of(serviceitems);
 						return optionalServiceItems;
 					}

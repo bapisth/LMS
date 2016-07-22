@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 
 import com.urja.model.util.HibernateUtil;
 
@@ -54,6 +55,22 @@ public class ServiceitemsHome {
 			log.error("getting all the elements failed!", re);
 			throw re;
 		}
+	}
+	
+	public List<Serviceitems> getServiceItemsByServiceId(int serviceId){
+		log.info("getServiceItemsByServiceId : Getting the service items as per the serviceID");
+		try{
+			Services services = new Services();
+			services.setServiceid(serviceId);
+			Criteria criteria = sessionFactory.openSession().createCriteria(Serviceitems.class);
+			criteria.add(Restrictions.eq("services", services));
+			List<Serviceitems> serviceItemList = criteria.list();
+			return serviceItemList;
+		}catch(RuntimeException re){
+			log.error("Error getting the service items as per the serviceID");
+			throw re;
+		}
+		
 	}
 
 	public void persist(Serviceitems transientInstance) {

@@ -16,7 +16,9 @@ var newItemRow = '<div class="form-group itemSection" id="itemSectionDiv">'+
 		'<label for="name"> Item Name<span class="color-red">*</span></label>'+
 	'</div>'+
 	'<div class="col-sm-6">'+
-		'<input type="text" class="form-control itemNameValue" value="">'+
+		'<select class="form-control itemNameValue itemSelectBoxRow">'+
+		$('itemSelectBox').html()+
+		'</select>'+
 	'</div>'+
 '</div>'+
 '</div>'+
@@ -41,11 +43,10 @@ var newServiceRow = ''+
 '</div>'+
 '<div class="row form-group">'+
 	'<div class="col-md-4">'+
-		'<select class="form-control serviceTypeSelect">'+
-			'<option value="1">Service Type1</option>'+
-			'<option value="2">Service Type2</option>'+
-			'<option value="3">Service Type3</option>'+
+		'<select class="form-control serviceTypeSelect" onchange="populateServiceType($(this))">'+
+			$('.serviceTypeSelect').html()+
 		'</select>'+
+	
 	'</div>'+
 '</div>'+
 '<div class="items">'+
@@ -56,7 +57,7 @@ var newServiceRow = ''+
 					'<label for="name"> Item Name<span class="color-red">*</span></label>'+
 				'</div>'+
 				'<div class="col-sm-6">'+
-					'<input type="text" class="form-control itemNameValue" value="">'+
+					'<select class="form-control itemNameValue itemSelectBox"></select>'+
 				'</div>'+
 			'</div>'+
 		'</div>'+
@@ -127,7 +128,36 @@ $(document).ready(function(){
 			}
 	   });
 	});
+	
+	$('.serviceTypeSelect').change(function(){
+		populateServiceType($(this));
+	});
 });
+
+function populateServiceType(obj){
+	alert(obj.val());
+	var serviceId = obj.val();
+	if(serviceId!=""){
+		$.ajax({
+			url: "ajax",
+			type: "POST",  
+		    dataType: "json",
+		    data: {
+		    	"serviceId":serviceId,
+		    	"cmd":"populateServiceItems"
+		    },
+			success: function(jsondata){
+				console.log(jsondata);
+				var items = "<option value='' ></option>";
+				$.each(jsondata.serviceItems, function(key, value){ 
+					items += "<option value='"+value.value+"'>"+value.label+"</option>";
+				});
+				$(".itemSelectBox").empty().append(items);
+				console.log(items);
+			}
+	   });
+	}
+}
 
 function addItemsToService(obj){
 	var itemsObjLast = obj.parent().parent().last();

@@ -43,7 +43,7 @@ public class UrjaServletContextListener implements ServletContextListener {
     	System.out.println("Servlet context initialize listener started!!");
     	PortalService.initializeItemsCache();
     	PortalService.initializeServicesCache();
-    	PortalService.initializeServiceItemsCache();
+    	PortalService.initializeServiceItemsByServiceIdCache();
     }
 
 	/**

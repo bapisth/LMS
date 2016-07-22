@@ -1,5 +1,5 @@
-<%@page import="com.urja.model.Customer"%>
-<%@page import="com.urja.model.Address" %>
+<%-- <%@page import="com.urja.model.Customer"%>
+<%@page import="com.urja.model.Address" %> --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- Page Title
         ============================================= -->
@@ -58,9 +58,13 @@
 									<div class="row form-group">
 										<div class="col-md-4">
 											<select class="form-control serviceTypeSelect">
-												<option value="1">Service Type1</option>
-												<option value="2">Service Type2</option>
-												<option value="3">Service Type3</option>
+											<option value=""></option>
+												<%-- <c:forEach items="${itemsCache}" var="item">
+													<option value="${item.itemid}">${item.itemname}</option>
+												</c:forEach> --%>
+												<c:forEach items="${servicesCache}" var="services">
+													<option value="${services.serviceid}">${services.servicename}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -73,8 +77,9 @@
 															class="color-red">*</span></label>
 													</div>
 													<div class="col-sm-6">
-														<input type="text" class="form-control itemNameValue"
-															value="" />
+														<!-- <input type="text" class="form-control itemNameValue"
+															value="" /> -->
+															<select class="form-control itemNameValue itemSelectBox"></select>
 													</div>
 												</div>
 											</div>
