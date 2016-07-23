@@ -1,3 +1,4 @@
+	<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
 		
 						<!-- start: PANEL CONFIGURATION MODAL FORM -->
 						<div class="modal fade" id="panel-config" tabindex="-1" role="dialog" aria-hidden="true">
@@ -93,16 +94,16 @@
 																Booking
 															</a>
 														</li>
-														<li>
+														<%--<li>
 															<a href="#myTab2_example2" data-toggle="tab">
 																Customer list
 															</a>
-														</li>
+														</li>  --%>
 														
 													</ul>
                                                     <div class="tab-content">
                                                         <div class="tab-pane fade in active" id="myTab2_example1">
-                                                            <!--search bar--->
+                                                            <%--<!--search bar--->
                                                           <div class="row">
                                                             <div class="col-md-6 col-md-offset-3">
                                                                 <div class="input-group well">
@@ -113,260 +114,70 @@
                                                                 </button> </span>
                                                         </div>
                                                             </div>
-                                                          </div>  
+                                                          </div>  --%>
 												
                                                     <!---//search bar-->
                                                     		
                                                             
                                                      <div class="table-responsive">
-                                                     	<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
-											<thead>
-												<tr>
-													<th>Booking Id</th>
-													<th class="hidden-xs">Customer Name</th>
-													<th>Contact No.</th>
-													<th class="hidden-xs"> Email ID</th>
-													<th>Total Items</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">janmenjaya@gmail.com</td>
-													<td>23</td>
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													<td class="hidden-xs">Subhashis@gmail.com</td>
-													<td>2</td>
-												</tr>
-												
-												
-												
-											</tbody>
-										</table>
+                                                     	<table class="table table-striped table-bordered table-hover table-full-width" id="bookingDetailSample_1">
+															<thead>
+																<tr>
+																	<th>Booking Id</th>
+																	<th>Customer Name</th>
+																	<th>Contact No.</th>
+																	<th>Pickup Date & time</th>
+																	<th>Status</th>
+																</tr>
+															</thead>
+														</table>
                                                      </div>       
                                                             
                                                             
 												</div>
+												<%--
 												<div class="tab-pane fade" id="myTab2_example2">
 													<div class="table-responsive">
                                                      	<table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
-											<thead>
-												<tr>
-													<th>Booking Id</th>
-													<th class="hidden-xs">Date & time</th>
-													<th>Status</th>
-													
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">16-05-2016 4:00P.M</td>
-													<td><span class="label label-info">Accepted</span></td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">16-05-2016 4:00P.M</td>
-													<td><span class="label label-danger">Closed</span></td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">16-05-2016 4:00P.M</td>
-													<td><span class="label label-primary">Pending</span></td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">16-05-2016 4:00P.M</td>
-													<td><span class="label label-warning">Process</span></td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">16-05-2016 4:00P.M</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">16-05-2016 4:00P.M</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-                                                <tr>
-													<td><a href="#">XX001</a></td>
-													<td class="hidden-xs">Janmenjaya Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-												<tr>
-													<td><a href="#">XX002</a></td>
-													<td class="hidden-xs">Subhashis Mohanty</td>
-													<td>51515151515</td>
-													
-												</tr>
-												
-												
-												
-											</tbody>
-										</table>
+															<thead>
+																<tr>
+																	<th>Booking Id</th>
+																	<th class="hidden-xs">Date & time</th>
+																	<th>Status</th>
+																	
+																</tr>
+															</thead>
+															<tbody>
+																<tr>
+																	<td><a href="#">XX001</a></td>
+																	<td class="hidden-xs">16-05-2016 4:00P.M</td>
+																	<td><span class="label label-info">Accepted</span></td>
+																	
+																</tr>
+																<tr>
+																	<td><a href="#">XX002</a></td>
+																	<td class="hidden-xs">16-05-2016 4:00P.M</td>
+																	<td><span class="label label-danger">Closed</span></td>
+																	
+																</tr>
+																<tr>
+																	<td><a href="#">XX001</a></td>
+																	<td class="hidden-xs">16-05-2016 4:00P.M</td>
+																	<td><span class="label label-primary">Pending</span></td>
+																	
+																</tr>
+																<tr>
+																	<td><a href="#">XX002</a></td>
+																	<td class="hidden-xs">16-05-2016 4:00P.M</td>
+																	<td><span class="label label-warning">Process</span></td>
+																	
+																</tr>
+																
+															</tbody>
+														</table>
                                                      </div>  			
-												</div>
-												
+												</div> 
+												--%>
 											</div>
 									  </div>
                                         
@@ -388,3 +199,7 @@
                                 
 							</div>
 						</div>
+						
+						
+<script type="text/javascript" src="js/admin/portal/bookingDetails.js"></script>
+

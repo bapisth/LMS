@@ -1,6 +1,7 @@
 package com.urja.model;
 // Generated Jul 19, 2016 11:26:33 PM by Hibernate Tools 4.3.1.Final
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,14 +15,14 @@ public class Serviceitems implements java.io.Serializable {
 	private Services services;
 	private float chargesperkg;
 	private float discount;
-	private int stampdate;
+	private Date stampdate;
 	private String stampuser;
 	private Set bookingitemses = new HashSet(0);
 
 	public Serviceitems() {
 	}
 
-	public Serviceitems(Items items, Services services, float chargesperkg, float discount, int stampdate,
+	public Serviceitems(Items items, Services services, float chargesperkg, float discount, Date stampdate,
 			String stampuser) {
 		this.items = items;
 		this.services = services;
@@ -31,7 +32,7 @@ public class Serviceitems implements java.io.Serializable {
 		this.stampuser = stampuser;
 	}
 
-	public Serviceitems(Items items, Services services, float chargesperkg, float discount, int stampdate,
+	public Serviceitems(Items items, Services services, float chargesperkg, float discount, Date stampdate,
 			String stampuser, Set bookingitemses) {
 		this.items = items;
 		this.services = services;
@@ -82,11 +83,11 @@ public class Serviceitems implements java.io.Serializable {
 		this.discount = discount;
 	}
 
-	public int getStampdate() {
+	public Date getStampdate() {
 		return this.stampdate;
 	}
 
-	public void setStampdate(int stampdate) {
+	public void setStampdate(Date stampdate) {
 		this.stampdate = stampdate;
 	}
 

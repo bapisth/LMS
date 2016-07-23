@@ -1,5 +1,8 @@
 package com.urja.util;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -62,6 +65,47 @@ public class PortalService {
 			log.error("PortalService parseLong() failed", e);
 		}
 		return num;
+	}
+	
+	public static boolean isNumber(String num){
+		try {
+			Double.parseDouble(num);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
+	public static ArrayList<String> getBookingStatus(){
+		ArrayList<String> status = new ArrayList<String>();
+		status.add("Request");
+		status.add("Request Accepted");
+		status.add("Received");
+		status.add("Process");
+		status.add("Ready To Delivery");
+		status.add("Delivered"); 
+		return status;
+	}
+	
+	public static String getBookingStatuLabel(String statu){
+		ArrayList<String> status = getBookingStatus();
+		for(int i=0;status!=null && i<status.size();i++){
+			if(statu!=null && statu.equalsIgnoreCase(status.get(i))){
+				if(i==0)		return "<span class='label label-danger'>"+statu+"</span>";
+				else if(i==1)	return "<span class='label label-warning'>"+statu+"</span>";
+				else if(i==2)	return "<span class='label label-default'>"+statu+"</span>";
+				else if(i==3)	return "<span class='label label-primary'>"+statu+"</span>";
+				else if(i==4)	return "<span class='label label-info'>"+statu+"</span>";
+				else if(i==6)	return "<span class='label label-success'>"+statu+"</span>";
+			}
+		}
+		return statu;
+	}
+
+	public static String getDateTimeFormat(Date date){
+		String dateTime = "";
+		SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY hh:mm a");
+		return format.format(date);
 	}
 	
 	public static String parseString(Object obj){

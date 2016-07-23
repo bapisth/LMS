@@ -10,7 +10,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
 
+import com.urja.model.BookingHome;
 import com.urja.util.PortalService;
 
 /**
@@ -31,7 +34,16 @@ public class AdminCtrl extends HttpServlet {
 		TilesContainer container = TilesAccess.getContainer(session.getServletContext());
 		String redirectPath = "laundry.bookingDetails";
 		
+
 		
+		switch(cmd){
+			case "bookingDetailInfo":{
+					int bookingid = PortalService.getInt("bookingid");
+					redirectPath = "laundry.bookingDetailInfo";
+				}
+				
+				break;
+		}
 		
 
 		container.render(redirectPath, request, response);

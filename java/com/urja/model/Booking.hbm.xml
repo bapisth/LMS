@@ -20,16 +20,16 @@
         <property name="bookingdatetime" type="timestamp">
             <column name="bookingdatetime" length="19" not-null="true" />
         </property>
-        <property name="pickuptime1" type="time">
+        <property name="pickuptime1" type="timestamp">
             <column name="pickuptime1" length="8" not-null="true" />
         </property>
-        <property name="pickuptime2" type="time">
+        <property name="pickuptime2" type="timestamp">
             <column name="pickuptime2" length="8" not-null="true" />
         </property>
-        <property name="delivertime1" type="time">
+        <property name="delivertime1" type="timestamp">
             <column name="delivertime1" length="8" not-null="true" />
         </property>
-        <property name="delivertime2" type="time">
+        <property name="delivertime2" type="timestamp">
             <column name="delivertime2" length="8" not-null="true" />
         </property>
         <property name="status" type="string">

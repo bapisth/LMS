@@ -99,8 +99,9 @@
 		<script type="text/javascript" src="assets/plugins/jQuery/jquery-1.11.1.min.js"></script>
 		<![endif]-->
 		<!--[if gte IE 9]><!-->
-<script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
+		<script src="assets/plugins/jQuery/jquery-2.1.1.min.js"></script>
 		<!--<![endif]-->
+		<script type="text/javascript" src="js/datatables.min.js"></script>
 		<script src="assets/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
 		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/plugins/blockUI/jquery.blockUI.js"></script>
@@ -128,7 +129,7 @@
 		<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 		<script src="assets/plugins/bootstrap-fileupload/bootstrap-fileupload.min.js"></script>
 		<script src="assets/plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
-		<script src="assets/plugins/DataTables/media/js/DT_bootstrap.js"></script>
+		<%-- <script src="assets/plugins/DataTables/media/js/DT_bootstrap.js"></script> --%>
 		<script src="assets/plugins/truncate/jquery.truncate.js"></script>
 		<script src="assets/plugins/summernote/dist/summernote.min.js"></script>
 		<script src="assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -142,12 +143,16 @@
 		<!-- start: CORE JAVASCRIPTS  -->
 		<script src="js/admin/main.js"></script>
 		<!-- end: CORE JAVASCRIPTS  -->
+ 
+		
 		<script>
 			jQuery(document).ready(function() {
 				Main.init();
 				SVExamples.init();
 				TableData.init();
 			});
+
+			f_buildListTable();	
 		</script>
         	</body>
 	<!-- end: BODY -->

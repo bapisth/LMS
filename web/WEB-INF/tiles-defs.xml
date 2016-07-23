@@ -39,4 +39,7 @@
 		<definition name="laundry.bookingDetails" extends="commonAdminTemplate">
 			<put-attribute name="body" value="/admin/bookingDetails.jsp" />
 		</definition>
+		<definition name="laundry.bookingDetailInfo" extends="commonAdminTemplate">
+			<put-attribute name="body" value="/admin/bookingDetailInfo.jsp" />
+		</definition>
 	</tiles-definitions>
